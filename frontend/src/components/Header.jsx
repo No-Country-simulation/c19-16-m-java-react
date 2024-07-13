@@ -4,9 +4,12 @@ import Icon from './Icon/Icon'
 const Header = () => {
   return (
     
+
+
+
    <div className='bg-primary w-full h-[96px] justify-center  text-white flex items-center '>
         <div className='flex justify-center grow'>
-        <Icon type='Logo'/>
+        <Icon type='Logo'/>        
         </div>
 
         <div className='flex gap-2 mr-3'>                     
