@@ -3,7 +3,11 @@ import {  } from 'react-icons/bi';
 import profilePicture from '../../assets/Images/Photo.jpg'
 import '../../css/main.css'
 import Header from '../../components/Header';
+
 import Icon from '../../components/Icon/Icon';
+
+
+
 
 const Home = () => {
   
@@ -16,11 +20,8 @@ const Home = () => {
 return (
     
     <div className='main'>    
+    <Header/>           
 
-    <Header/>   
-        
-
-    
 
     <section id='main-container' className='container flex flex-col  items-center space-y-5 '>
         <div className='flex justify-around items-center gap-5' >        
