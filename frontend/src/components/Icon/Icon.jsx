@@ -1,4 +1,3 @@
-
 import Logo from "./Logo.svg?react";
 import Warning from './Warning.svg?react'
 
@@ -8,6 +7,8 @@ import Transactions from './Transactions.svg?react'
 import Transfers from './Transfers.svg?react'
 import Services from './Services.svg?react'
 import Products from './Products.svg?react'
+import StarFilled from './StarFilled.svg?react'
+import KebabMenu from './KebabMenu.svg?react'
 
 
 export default function Icon({type}) {
@@ -23,6 +24,8 @@ export default function Icon({type}) {
         {type === "Transfers" && <Transfers/>}
         {type === "Services" && <Services/>}
         {type === "Products" && <Products/>}
+        {type === "StarFilled" && <StarFilled/>}
+        {type === "KebabMenu" && <KebabMenu/>}
 
         
         </>
