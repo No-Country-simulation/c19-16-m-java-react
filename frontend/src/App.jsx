@@ -16,6 +16,7 @@ import Footer from './components/Footer'
 import Success from './Pages/Transfer/Success.jsx';
 import TransferStepContainer from './Pages/Transfer/TransferStepContainer.jsx';
 import LoaderPage from './Pages/LoaderPager/LoaderPage.jsx';
+import ErrorPage from './Pages/ErrorPage/ErrorPage.jsx';
 
 import './css/main.css'
 
@@ -38,7 +39,7 @@ function App() {
           <Route path='/RegisterPaso3' element={<Register3 />} />
           <Route path='/Transfers' element={<Transfer />} />
           <Route path='/TransferStepContainer' element={<TransferStepContainer  />} />
-        
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </BrowserRouter>
     </>
