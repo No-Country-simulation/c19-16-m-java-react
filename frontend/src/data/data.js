@@ -1,4 +1,4 @@
-const user = [
+const users = [
     {
       "email": "user1@example.com",
       "password": "P@ssw0rd",
@@ -200,3 +200,5 @@ const user = [
       ]
     }
   ]
+
+  export default users; 

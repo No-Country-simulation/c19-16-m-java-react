@@ -1,19 +1,24 @@
 import { useState } from 'react';
 import { BiUser, BiKey, BiShowAlt, BiHide, BiFingerprint } from 'react-icons/bi';
 import { Link } from "react-router-dom"
+import users from '../../data/data'
+import { useNavigate } from 'react-router-dom';
 
 export default function LoginPage() {
   
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
+
+  console.log(users);
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
 
   const [emailError, setemailError] = useState('')
-  const [email, setemail] = useState('')
+  const [email, setEmail] = useState('')
 
-  const [passError, setpassError] = useState('')
+  const [password, setPassword] = useState('')
   const [passwordError, setPasswordError] = useState('')
 
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -22,13 +27,15 @@ export default function LoginPage() {
 
   const handleEmailChange = (e) => {   
 
+
     if (!e.target.value) {
       setemailError('Debe introducir un correo electrónico')
     } else if (!emailRegex.test(e.target.value)) {
-      setemailError('El correo electrónico introducido no es válido')
+      setemailError('El correo electrónico introducido no es válido')   
     } else {
       setemailError('')
-    }   
+      setEmail(e.target.value)
+    }  
       
   }
 
@@ -40,9 +47,38 @@ export default function LoginPage() {
       setPasswordError('La contraseña introducida no es valida')
     } else {
       setPasswordError('')
+      setPassword(e.target.value)
     }   
       
   }
+
+  const handleSubmit = (e) => {
+
+    e.preventDefault();
+
+    console.log(email);
+
+    setemailError('')
+
+
+    if (!emailError && !passwordError) {
+      // simular 
+      let userIndex = users.findIndex(user => user.email === email)
+
+      if (userIndex == -1) {
+        setemailError('El correo introducido no existe')  
+      } else if (users[userIndex].password === password) {        
+          navigate("/Home")
+        } else {
+          setPasswordError('Contraseña no valida')
+        }
+      }
+
+    } 
+
+    
+
+  
 
 
   return (
@@ -63,6 +99,9 @@ export default function LoginPage() {
 
 
       <div className='w-full max-w-xs '>
+
+
+        <form action="" onSubmit={handleSubmit}> 
 
         {/* User input*/}
         <label className='block mb-2 text-sm font-bold text-gray-700'>Usuario</label>
@@ -106,11 +145,11 @@ export default function LoginPage() {
           <button onClick={togglePasswordVisibility} className='p-2 text-gray-700 focus:outline-none'>
             {showPassword ? 
             
-            <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-              <BiHide />              
+            <div className="absolute inset-y-0 right-0 pr-1 flex items-center pointer-events-none">
+              <BiHide className='h-3'/>              
             </div>
             :
-            <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+            <div className="absolute inset-y-0 right-0 pr-1 flex items-center pointer-events-none">
               <BiShowAlt />
             </div>
           }
@@ -139,6 +178,7 @@ export default function LoginPage() {
           <p className='text-gray-700'>¿Aún no tienes cuenta?</p>
           <button className='mt-2 px-4 py-2 bg-lightGrey text-black rounded  transition-colors'>  <Link to={'/Register'}> Registrarse</Link>  </button>
         </div>
+        </form>
       </div>
     </div>
   );
