@@ -1,7 +1,7 @@
 const user = [
     {
       "email": "user1@example.com",
-      "password": "password123",
+      "password": "P@ssw0rd",
       "name": "John",
       "surname": "Doe",
       "account_number": "123456789",
@@ -41,7 +41,7 @@ const user = [
     },
     {
       "email": "user2@example.com",
-      "password": "password456",
+      "password": "P@ssw0rd",
       "name": "Alice",
       "surname": "Johnson",
       "account_number": "234567891",
@@ -81,7 +81,7 @@ const user = [
     },
     {
       "email": "user3@example.com",
-      "password": "password789",
+      "password": "P@ssw0rd",
       "name": "Michael",
       "surname": "Brown",
       "account_number": "345678912",
@@ -121,7 +121,7 @@ const user = [
     },
     {
       "email": "user4@example.com",
-      "password": "password012",
+      "password": "Aa1@aaaa",
       "name": "Emily",
       "surname": "Martinez",
       "account_number": "456789123",
@@ -161,7 +161,7 @@ const user = [
     },
     {
       "email": "user5@example.com",
-      "password": "password345",
+      "password": "Aa1@aaaa",
       "name": "David",
       "surname": "Garcia",
       "account_number": "567891234",
