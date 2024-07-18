@@ -169,13 +169,6 @@ export default function LoginPage() {
           <a href='#' className='text-sm text-black hover:underline'>¿Olvidaste la clave?</a>
         </div>
 
-        <div className='flex items-center justify-center gap-4'>
-          <button className='flex justify-center items-center px-2 py-2 text-black bg-lightGrey focus:outline-none'>
-            <BiFingerprint className='' />
-          </button>
-          <p> Ingresar con biometría </p>
-        </div>
-
         <div className='flex items-center justify-between text-center mt-4'>
           <p className='text-gray-700'>¿Aún no tienes cuenta?</p>
           <button className='mt-2 px-4 py-2 bg-lightGrey text-black rounded  transition-colors'>  <Link to={'/Register'}> Registrarse</Link>  </button>
