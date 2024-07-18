@@ -1,13 +1,15 @@
-import React from 'react'
+import React, { useState, useEffect, useRef } from 'react';
+import { FaTimes } from 'react-icons/fa';
 import { } from 'react-icons/bi';
 import profilePicture from '../../assets/Images/Photo.jpg'
 import '../../css/main.css'
 import Header from '../../components/Header';
+import VirtualAssistantModal from '../../components/VirtualAssistantModal';
+
 
 import Icon from '../../components/Icon/Icon';
 import { Link } from 'react-router-dom';
-
-
+import {useAssistant} from '../../Providers/AssistantProvider'
 
 
 const Home = () => {
@@ -17,10 +19,18 @@ const Home = () => {
         balance: "$5.435,00 usd"
     }
 
+    const [assistantActive, setAssistantActive] = useAssistant();
+
 
     return (
+        <> 
+         
+         {assistantActive && <VirtualAssistantModal/> }
 
         <div className='main'>
+        
+        
+            
             <Header />
 
 
@@ -29,7 +39,12 @@ const Home = () => {
 
                     <div className='flex items-center justify-center gap-10 pt-3'>
                         <div className='flex flex-col'>
-                            <h3 className='text-base font-medium '> Bienvenida </h3>
+                            <h3 
+                                className='text-base font-medium '> 
+                                Bienvenida 
+                                
+                            </h3>
+                            
                             <span className='text-xl text-primary text-[24px]'> {data.name} </span>
                         </div>
                         <img src={profilePicture} className='h-[120px] w-[120px]' alt="" />
@@ -108,6 +123,7 @@ const Home = () => {
 
 
         </div>
+        </>
     )
 }
 
