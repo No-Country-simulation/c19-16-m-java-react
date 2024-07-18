@@ -5,7 +5,7 @@ import profilePicture from '../../assets/Images/Photo.jpg'
 import '../../css/main.css'
 import Header from '../../components/Header';
 import VirtualAssistantModal from '../../components/VirtualAssistantModal';
-
+import ToolTip from '../../components/ToolTip'
 
 import Icon from '../../components/Icon/Icon';
 import { Link } from 'react-router-dom';
@@ -21,9 +21,13 @@ const Home = () => {
 
     const [assistantActive, setAssistantActive] = useAssistant();
 
+    const [isVisible, setVisible] = useState(true)
+
 
     return (
         <> 
+
+        {/* <ToolTip/> */}
          
          {assistantActive && <VirtualAssistantModal/> }
 
@@ -45,9 +49,38 @@ const Home = () => {
                                 
                             </h3>
                             
-                            <span className='text-xl text-primary text-[24px]'> {data.name} </span>
+                            <div className='relative' onClick={() => setVisible(!isVisible)}> 
+                            
+                                <span className='text-xl text-primary text-[24px]'> {data.name} </span>
+
+                                {isVisible && 
+                                <div className="absolute bg-primary z-50 left-1/2 ml-10 transform -translate-x-1/2 mt-6 w-60 sm:w-72 md:w-80 px-4 py-2 rounded-lg shadow-lg border border-primary transition-all duration-300 ease-in-out" role="tooltip">            
+                                <div className="text-white text-sm font-medium mb-2">                Nombre de usuario           </div>            
+                                    <p className="text-white text-xs">                Aquí puedes ver tu nombre. Para editarlo, ve a tu perfil y haz los cambios que necesites.           </p>            
+                                    <div className="w-3 h-3 bg-primary border-t border-l border-primary rotate-45 absolute left-1/2 transform -translate-x-1/2" style={{top: '-7px'}}>
+                                    </div>          
+                                </div> }       
+                            
+                            </div>
+                        
+                                
+
+
+
                         </div>
-                        <img src={profilePicture} className='h-[120px] w-[120px]' alt="" />
+                        
+                        <div className='relative'>
+                            <img src={profilePicture} className='h-[120px] w-[120px]' alt="" />
+                                                        
+                                {/* <div className="absolute bg-primary z-50 left-1/2 mr-10 transform -translate-x-1/2 mt-6 w-60 sm:w-72 md:w-80 px-4 py-2 rounded-lg shadow-lg border border-primary transition-all duration-300 ease-in-out" role="tooltip">            
+                                <div className="text-white text-sm font-medium mb-2">                Foto de usuario          </div>            
+                                    <p className="text-white text-xs">                Personaliza tu foto tocando la imagen o yendo a tu perfil. Los demás usuarios verán esta foto.           </p>            
+                                    <div className="w-3 h-3 bg-primary border-t border-l border-primary rotate-45 absolute left-1/2 transform -translate-x-1/2" style={{top: '-7px'}}>
+                                    </div>          
+                                </div>         */}
+                            
+                        </div>
+                    
                     </div>
 
 
