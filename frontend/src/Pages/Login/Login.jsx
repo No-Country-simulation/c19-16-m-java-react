@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { BiUser, BiKey, BiShowAlt, BiHide, BiFingerprint } from 'react-icons/bi';
 import { Link } from "react-router-dom"
 import users from '../../data/data'
 import { useNavigate } from 'react-router-dom';
+
 
 export default function LoginPage() {
   
@@ -14,6 +15,8 @@ export default function LoginPage() {
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+
+  const IngresarBtn = useRef(null)
 
   const [emailError, setemailError] = useState('')
   const [email, setEmail] = useState('')
@@ -36,6 +39,10 @@ export default function LoginPage() {
       setemailError('')
       setEmail(e.target.value)
     }  
+
+    if (!emailError && !passwordError) {
+      IngresarBtn.current.style.backgroundcolor = "yellow"
+    }
       
   }
 
@@ -48,7 +55,9 @@ export default function LoginPage() {
     } else {
       setPasswordError('')
       setPassword(e.target.value)
-    }   
+    }  
+    
+
       
   }
 
@@ -163,7 +172,11 @@ export default function LoginPage() {
 
 
 
-        <Link to="/Home" ><button className='w-full px-4 py-2 mb-4 text-black bg-greyDesign rounded  focus:outline-none'>Ingresar</button></Link>
+        <Link to="/Home" >
+          <button className={`w-full px-4 py-2 mb-4 text-black ${!emailError && !passwordError ?  'bg-green-600' :  'bg-lightGrey cursor-not-allowed' }  rounded  focus:outline-none`}  ref={IngresarBtn} >
+            Ingresar
+          </button>
+        </Link>
 
         <div className='text-center mb-4'>
           <a href='#' className='text-sm text-black hover:underline'>¿Olvidaste la clave?</a>
@@ -171,7 +184,11 @@ export default function LoginPage() {
 
         <div className='flex items-center justify-between text-center mt-4'>
           <p className='text-gray-700'>¿Aún no tienes cuenta?</p>
-          <button className='mt-2 px-4 py-2 bg-lightGrey text-black rounded  transition-colors'>  <Link to={'/Register'}> Registrarse</Link>  </button>
+          <button 
+            
+            className='mt-2 px-4 py-2 bg-lightGrey text-black rounded  transition-colors'>  
+            <Link to={'/Register'}> Registrarse</Link>  
+          </button>
         </div>
         </form>
       </div>
