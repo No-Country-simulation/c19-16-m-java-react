@@ -9,7 +9,7 @@ const Header = () => {
   
   const [assistantActive, setAssistantActive] = useAssistant();
 
-  console.log('>> assi', assistantActive);
+  
   
 
   const activeAssistant = () => {
@@ -35,8 +35,13 @@ const Header = () => {
 
         
         <button className='flex gap-2' onClick={activeAssistant}>
-        <p className=''>Ayuda {assistantActive && <span> activada </span>} </p>
-          <Icon type='Warning'/>
+
+          <div className='flex items-center gap-2'> 
+            <p className=''> Ayuda </p>           
+            {assistantActive ?  <Icon type='SwitchOn'/> : <Icon type='SwitchOff'/> }
+          </div>
+          
+        
         </button>
         </div>        
   </div>
