@@ -40,11 +40,12 @@ function App() {
 
 
           <Route path='/Register' element={<Register />} />
+          <Route path='/RegisterPaso2' element={<Register2 />} />
+          <Route path='/RegisterPaso3' element={<Register3 />} />
+
           
             <Route element={<PrivateRoutes />} > 
               <Route path='/Home' element={<Home />} />
-              <Route path='/RegisterPaso2' element={<Register2 />} />
-              <Route path='/RegisterPaso3' element={<Register3 />} />
               <Route path='/Transfers' element={<Transfer />} />
               <Route path='/TransferStepContainer' element={<TransferStepContainer />} />
               <Route path='/Pay' element={<Pay />} />
