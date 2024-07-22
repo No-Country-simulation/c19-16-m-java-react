@@ -1,13 +1,15 @@
 import React, { useState, useRef, useEffect } from 'react';
 import tooltips from '../data/tooltipsText';
+import {useAssistant} from '../Providers/AssistantProvider'
 
 
 
 
-
-const ToolTip = ({title, description, children, id}) => {  
+const ToolTip = ({children, id}) => {  
     
     const [tooltipdata, setToolTipDada] = useState({})   
+
+    const [assistantActive, setAssistantActive] = useAssistant();
    
     //  Muestra oculta el tooltip al hacer click en el componente. 
     const [isOpen, setIsOpen] = useState(false);  
@@ -28,8 +30,11 @@ const ToolTip = ({title, description, children, id}) => {
         
         
         const toggleTooltip = () => {
-            setIsOpen(!isOpen); 
-            searchToolTip(id) 
+        // Solo se muestra los tooltips si esta activo el asistente.    
+            if (assistantActive) {
+                setIsOpen(!isOpen)
+                searchToolTip(id) 
+            }   
         }
         
         
