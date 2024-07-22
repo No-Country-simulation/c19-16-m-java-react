@@ -1,9 +1,13 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import { FaTimes } from 'react-icons/fa';
+
+
 import { } from 'react-icons/bi';
 import profilePicture from '../../assets/Images/Photo.jpg'
 import '../../css/main.css'
 import Header from '../../components/Header';
+
 import VirtualAssistantModal from '../../components/VirtualAssistantModal';
 import ToolTip from '../../components/ToolTip'
 
@@ -13,12 +17,19 @@ import {useAssistant} from '../../Providers/AssistantProvider'
 import tooltips from '../../data/tooltipsText'
 import users from '../../data/data'
 
+
+
+
+
+
+
 const Home = () => {
 
     const data = {
         name: 'Marisol Domi',
         balance: "$5.435,00 usd"
     }
+
 
     const [assistantActive, setAssistantActive] = useAssistant();
 
@@ -33,9 +44,7 @@ const Home = () => {
          {assistantActive && <VirtualAssistantModal/> }
 
         <div className='main'>
-        
-        
-            
+       
             <Header />
 
 
@@ -44,6 +53,7 @@ const Home = () => {
 
                     <div className='flex items-center justify-center gap-10 pt-3'>
                         <div className='flex flex-col'>
+
                             <h3 
                                 className='text-base font-medium '> 
                                 Bienvenida 
@@ -70,6 +80,7 @@ const Home = () => {
                             
                         </div>
                     
+
                     </div>
 
 
@@ -150,7 +161,9 @@ const Home = () => {
 
 
         </div>
+
         </>
+
     )
 }
 

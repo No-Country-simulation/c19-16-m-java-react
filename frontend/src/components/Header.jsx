@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import Icon from './Icon/Icon'
 
@@ -8,7 +9,7 @@ const Header = () => {
   
   const [assistantActive, setAssistantActive] = useAssistant();
 
-  console.log('>> assi', assistantActive);
+  
   
 
   const activeAssistant = () => {
@@ -23,6 +24,7 @@ const Header = () => {
     
 
 
+
    <div className='bg-primary w-full h-[96px] justify-center  text-white flex items-center '>
         <div className='flex justify-center grow'>
         <Icon type='Logo'/>        
@@ -30,10 +32,16 @@ const Header = () => {
         </div>
 
         <div className='flex gap-2 mr-3'>                     
+
         
         <button className='flex gap-2' onClick={activeAssistant}>
-        <p className=''>Ayuda {assistantActive && <span> activada </span>} </p>
-          <Icon type='Warning'/>
+
+          <div className='flex items-center gap-2'> 
+            <p className=''> Ayuda </p>           
+            {assistantActive ?  <Icon type='SwitchOn'/> : <Icon type='SwitchOff'/> }
+          </div>
+          
+        
         </button>
         </div>        
   </div>
@@ -47,6 +55,8 @@ const Header = () => {
   
   
   </>
+
+
 
   )
 }

@@ -63,11 +63,14 @@ export default function LoginPage() {
 
   const handleSubmit = (e) => {
 
-    e.preventDefault();
-
-    console.log(email);
+    e.preventDefault();  
 
     setemailError('')
+
+    console.log('Estoy en handleSubmit');
+    console.log('emailError > ', emailError);
+    console.log('passwordError > ', passwordError);
+
 
 
     if (!emailError && !passwordError) {
@@ -77,6 +80,8 @@ export default function LoginPage() {
       if (userIndex == -1) {
         setemailError('El correo introducido no existe')  
       } else if (users[userIndex].password === password) {        
+        console.log('guardo el token');  
+        localStorage.setItem('token', '1234')
           navigate("/Home")
         } else {
           setPasswordError('Contraseña no valida')
@@ -172,15 +177,19 @@ export default function LoginPage() {
 
 
 
-        <Link to="/Home" >
+
+        
           <button className={`w-full px-4 py-2 mb-4 text-black ${!emailError && !passwordError ?  'bg-green-600' :  'bg-lightGrey cursor-not-allowed' }  rounded  focus:outline-none`}  ref={IngresarBtn} >
             Ingresar
           </button>
-        </Link>
+        
+
+
 
         <div className='text-center mb-4'>
           <a href='#' className='text-sm text-black hover:underline'>¿Olvidaste la clave?</a>
         </div>
+
 
         <div className='flex items-center justify-between text-center mt-4'>
           <p className='text-gray-700'>¿Aún no tienes cuenta?</p>

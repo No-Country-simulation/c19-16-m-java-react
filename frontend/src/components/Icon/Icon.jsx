@@ -9,7 +9,8 @@ import Services from './Services.svg?react'
 import Products from './Products.svg?react'
 import StarFilled from './StarFilled.svg?react'
 import KebabMenu from './KebabMenu.svg?react'
-
+import SwitchOn from './Switch-on.svg?react'
+import SwitchOff from './Switch-off.svg?react'
 
 export default function Icon({type}) {
     return (
@@ -26,7 +27,8 @@ export default function Icon({type}) {
         {type === "Products" && <Products/>}
         {type === "StarFilled" && <StarFilled/>}
         {type === "KebabMenu" && <KebabMenu/>}
-
+        {type === "SwitchOn" && <SwitchOn/>}
+        {type === "SwitchOff" && <SwitchOff/>}
         
         </>
             
