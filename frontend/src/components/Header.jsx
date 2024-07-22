@@ -26,7 +26,7 @@ const Header = () => {
 
 
 
-   <div className='bg-primary w-full h-[96px] justify-center  text-white flex items-center '>
+   <div className='bg-primary w-full h-[96px] justify-center  text-white flex items-center mb-6'>
         
         {/*  Si hace clic en el logo, se redirecciona a Home */}
           <div className='flex justify-center grow cursor-pointer'>

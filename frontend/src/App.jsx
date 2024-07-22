@@ -18,8 +18,10 @@ import Pay from './pages/Servicespay/Pay.jsx';
 import PayStepContainer from './pages/Servicespay/PayStepContainer.jsx';
 
 import {AssistantProvider} from '../src/Providers/AssistantProvider.jsx'
+import ProfilePage from './pages/ProfilePage/ProfilePage.jsx';
 
 import PrivateRoutes from './auth/PrivateRoutes.jsx';
+
 
 function App() {
 
@@ -50,6 +52,7 @@ function App() {
               <Route path='/TransferStepContainer' element={<TransferStepContainer />} />
               <Route path='/Pay' element={<Pay />} />
               <Route path='/PayStepContainer' element={<PayStepContainer />} />
+              <Route path='Profile' element={<ProfilePage />} />
             </Route>
 
             
