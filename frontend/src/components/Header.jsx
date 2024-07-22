@@ -1,5 +1,6 @@
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, } from 'react';
+import { Link } from 'react-router-dom'
 import Icon from './Icon/Icon'
 
 import {useAssistant} from '../Providers/AssistantProvider'
@@ -26,10 +27,15 @@ const Header = () => {
 
 
    <div className='bg-primary w-full h-[96px] justify-center  text-white flex items-center '>
-        <div className='flex justify-center grow'>
-        <Icon type='Logo'/>        
-
-        </div>
+        
+        {/*  Si hace clic en el logo, se redirecciona a Home */}
+          <div className='flex justify-center grow cursor-pointer'>
+          <Link to="/Home">     
+            <Icon type='Logo'/>        
+          </Link>
+          </div>
+        
+        
 
         <div className='flex gap-2 mr-3'>                     
 
