@@ -3,14 +3,15 @@ import { BiUser, BiKey, BiShowAlt, BiHide, BiFingerprint } from 'react-icons/bi'
 import { Link } from "react-router-dom"
 import users from '../../data/data'
 import { useNavigate } from 'react-router-dom';
+import { useUser } from '../../Providers/UserProvider';
 
 
 export default function LoginPage() {
   
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
-
-  console.log(users);
+  const [user, setsetUser] = useUser()
+  
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -67,10 +68,6 @@ export default function LoginPage() {
 
     setemailError('')
 
-    console.log('Estoy en handleSubmit');
-    console.log('emailError > ', emailError);
-    console.log('passwordError > ', passwordError);
-
 
 
     if (!emailError && !passwordError) {
@@ -82,7 +79,12 @@ export default function LoginPage() {
       } else if (users[userIndex].password === password) {        
         console.log('guardo el token');  
         localStorage.setItem('token', '1234')
+          
+          console.log('Usuario: users[userIndex]', users[userIndex]);
+          // FIXME: Cuando este el back recuperar los datos que nos manden. 
+          setsetUser(users[userIndex])
           navigate("/Home")
+
         } else {
           setPasswordError('Contraseña no valida')
         }

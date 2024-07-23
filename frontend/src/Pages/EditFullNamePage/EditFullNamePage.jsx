@@ -1,9 +1,12 @@
 
 import Header from '../../components/Header'
 import { useState } from 'react'
+import { useUser } from '../../Providers/UserProvider'
 
 const EditFullNamePage = () => {
-  
+
+  const [user, setUser] = useUser();
+
   const [name, setName] = useState('')
   const [surname, setSurname] = useState('')
   
@@ -67,7 +70,7 @@ const EditFullNamePage = () => {
 
         <div className='space-y-2'> 
             <h2 className='text-3xl text-center'> Cambiar nombre y apellido </h2>
-            <h2 className='text-3xl text-center'> Marisol Domi </h2>
+            <h2 className='text-3xl text-center'> {user.name} {user.surname} </h2>
             <p className=''> A continuación puedes actualizar tu nombre y apellido. </p>
         </div>
 

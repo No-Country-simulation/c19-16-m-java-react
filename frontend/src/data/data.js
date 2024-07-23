@@ -1,12 +1,12 @@
 const users = [
     {
-      "email": "user1@example.com",
+      "email": "Antonio@essentiaBank.com",
       "password": "P@ssw0rd",
-      "name": "John",
-      "surname": "Doe",
+      "name": "Antonio",
+      "surname": "Navarro",
       "account_number": "123456789",
       "balance": 1500.75,
-      "phone_number": "+1234567890",
+      "phone_number": "+34623184800",
       "date_of_birth": "1990-01-01",
       "transfers": [
         {
@@ -40,7 +40,7 @@ const users = [
       ]
     },
     {
-      "email": "user2@example.com",
+      "email": "user2@essentiaBank.com",
       "password": "P@ssw0rd",
       "name": "Alice",
       "surname": "Johnson",
@@ -80,7 +80,7 @@ const users = [
       ]
     },
     {
-      "email": "user3@example.com",
+      "email": "user3@essentiaBank.com",
       "password": "P@ssw0rd",
       "name": "Michael",
       "surname": "Brown",
@@ -120,7 +120,7 @@ const users = [
       ]
     },
     {
-      "email": "user4@example.com",
+      "email": "user4@essentiaBank.com",
       "password": "Aa1@aaaa",
       "name": "Emily",
       "surname": "Martinez",
@@ -160,7 +160,7 @@ const users = [
       ]
     },
     {
-      "email": "user5@example.com",
+      "email": "user5@essentiaBank.com",
       "password": "Aa1@aaaa",
       "name": "David",
       "surname": "Garcia",

@@ -4,10 +4,15 @@ import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import '../../css/main.css'
 import { Link, useNavigate} from 'react-router-dom'
+import { useUser } from '../../Providers/UserProvider'
 
 const ProfilePage = () => {
 
+    
+    const [user, setUser] = useUser();
+
     const navigate = useNavigate();
+
   
     const logout = () => {
         localStorage.removeItem('token')
@@ -31,7 +36,7 @@ const ProfilePage = () => {
                     <h1 className='text-center'> Perfil </h1>
                     <img src={profilePicture} className='h-[120px] w-[120px] mb-4' alt="" />
                     <p> Nombre y apellido </p>
-                    <h3 className='text-primary text-xl text-center'> Marisol Domi </h3>
+                    <h3 className='text-primary text-xl text-center'> {user.name} {user.surname} </h3>
                 </div>
             
                 <div id='buttons' className='flex flex-col w-11/12 max-w-screen-lg mx-auto gap-4 '>
