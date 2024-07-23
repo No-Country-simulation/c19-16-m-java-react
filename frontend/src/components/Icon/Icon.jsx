@@ -11,6 +11,12 @@ import StarFilled from './StarFilled.svg?react'
 import KebabMenu from './KebabMenu.svg?react'
 import SwitchOn from './Switch-on.svg?react'
 import SwitchOff from './Switch-off.svg?react'
+import Profile from './Profile.svg?react'
+
+// Footer Icons
+import House from './House.svg?react'
+import TransfersFooter from './TransfersFooter.svg?react'
+import ServicesFooter from './ServicesFooter.svg?react'
 
 export default function Icon({type}) {
     return (
@@ -29,6 +35,11 @@ export default function Icon({type}) {
         {type === "KebabMenu" && <KebabMenu/>}
         {type === "SwitchOn" && <SwitchOn/>}
         {type === "SwitchOff" && <SwitchOff/>}
+
+        {type === "House" && <House/>}
+        {type === "TransfersFooter" && <TransfersFooter/>}
+        {type === "ServicesFooter" && <ServicesFooter/>}
+        {type === "Profile" && <Profile/>}
         
         </>
             
