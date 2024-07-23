@@ -16,7 +16,7 @@ import { Link } from 'react-router-dom';
 import {useAssistant} from '../../Providers/AssistantProvider'
 import tooltips from '../../data/tooltipsText'
 import users from '../../data/data'
-
+import Footer from '../../../src/components/Footer'
 
 
 
@@ -161,6 +161,8 @@ const Home = () => {
 
 
         </div>
+
+        <Footer/>
 
         </>
 
