@@ -6,7 +6,7 @@ const users = [
       "surname": "Navarro",
       "account_number": "123456789",
       "balance": 1500.75,
-      "phone_number": "+34623184800",
+      "phone_number": "+34 623 18 4800",
       "date_of_birth": "1990-01-01",
       "transfers": [
         {
@@ -40,10 +40,10 @@ const users = [
       ]
     },
     {
-      "email": "user2@essentiaBank.com",
+      "email": "Caro@essentiaBank.com",
       "password": "P@ssw0rd",
-      "name": "Alice",
-      "surname": "Johnson",
+      "name": "Caro",
+      "surname": "Arteaga",
       "account_number": "234567891",
       "balance": 2200.50,
       "phone_number": "+1234567891",
@@ -80,10 +80,10 @@ const users = [
       ]
     },
     {
-      "email": "user3@essentiaBank.com",
+      "email": "Ana@essentiaBank.com",
       "password": "P@ssw0rd",
-      "name": "Michael",
-      "surname": "Brown",
+      "name": "Ana Cristina",
+      "surname": "Morales",
       "account_number": "345678912",
       "balance": 1800.00,
       "phone_number": "+1234567892",
@@ -120,10 +120,10 @@ const users = [
       ]
     },
     {
-      "email": "user4@essentiaBank.com",
+      "email": "Gloria@essentiaBank.com",
       "password": "Aa1@aaaa",
-      "name": "Emily",
-      "surname": "Martinez",
+      "name": "Gloria",
+      "surname": "Ramos",
       "account_number": "456789123",
       "balance": 1300.25,
       "phone_number": "+1234567893",
@@ -160,10 +160,10 @@ const users = [
       ]
     },
     {
-      "email": "user5@essentiaBank.com",
+      "email": "Paul@essentiaBank.com",
       "password": "Aa1@aaaa",
-      "name": "David",
-      "surname": "Garcia",
+      "name": "Paul",
+      "surname": "Greg",
       "account_number": "567891234",
       "balance": 2000.00,
       "phone_number": "+1234567894",

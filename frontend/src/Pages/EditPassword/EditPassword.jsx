@@ -1,12 +1,14 @@
 
 import Header from '../../components/Header'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const EditPassword = () => {
 
   const [currentPassword, setCurrentPassword] = useState('')
   const [newPassword, setNewPassword] = useState('')
   const [confirmPassword, confirmNewPassword] = useState('')
+  const navigate = useNavigate();
 
   const CurrentPassword = () => {
 
@@ -76,7 +78,7 @@ const EditPassword = () => {
 
         <div className='w-full px-6 pb-4'>
         <div className='flex justify-end gap-3 items-center'>
-          <p> Atrás </p>
+          <button onClick={()=> navigate(-1)}> Atrás </button>
           <button className='bg-darkGrey text-white  py-2 px-8 rounded-lg shadow' > Guardar </button>
           </div>
       </div>
