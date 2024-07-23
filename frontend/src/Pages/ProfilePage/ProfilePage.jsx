@@ -49,14 +49,17 @@ const ProfilePage = () => {
                     </button>
                     </Link>
                     
-
+                    <Link to='/editPhoneNumber'> 
                     <button className='text-primary text-center text-sm bg-lightGrey rounded-lg py-3 px-4 box-shadow-btn w-full' >
                         Cambiar teléfono de confirmación
                     </button>
+                    </Link>
 
+                    <Link to='/editEmail'> 
                     <button className='text-primary text-center text-sm bg-lightGrey rounded-lg py-3 px-4 box-shadow-btn w-full' >
                         Cambiar mail de ingreso
                     </button>
+                    </Link>
 
                     <button className='text-white text-center text-sm bg-primary rounded-lg py-3 px-4 box-shadow-btn w-full' onClick={logout}>
                         Cerrar sesión

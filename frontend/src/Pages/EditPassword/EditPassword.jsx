@@ -1,8 +1,20 @@
 
 import Header from '../../components/Header'
-
+import { useState } from 'react'
 
 const EditPassword = () => {
+
+  const [currentPassword, setCurrentPassword] = useState('')
+  const [newPassword, setNewPassword] = useState('')
+  const [confirmPassword, confirmNewPassword] = useState('')
+
+  const CurrentPassword = () => {
+
+  }
+
+  
+
+
   return (
     <>
 
