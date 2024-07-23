@@ -3,9 +3,18 @@ import profilePicture from '../../assets/Images/Photo.jpg'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import '../../css/main.css'
+import { Link, useNavigate} from 'react-router-dom'
 
 const ProfilePage = () => {
-  return (
+
+    const navigate = useNavigate();
+  
+    const logout = () => {
+        localStorage.removeItem('token')
+        navigate('/')    
+    }
+  
+    return (
 
     <> 
 
@@ -27,23 +36,29 @@ const ProfilePage = () => {
             
                 <div id='buttons' className='flex flex-col w-11/12 max-w-screen-lg mx-auto gap-4 '>
                     
+                    <Link to='/editName' >                    
                     <button className='text-primary text-center text-sm bg-lightGrey rounded-lg py-3 px-4 box-shadow-btn w-full' >
                         Cambiar nombre y apellido
                     </button>
+                    </Link>
 
-                    <button className='text-primary text-center text-sm bg-lightGrey rounded-lg py-3 px-4 box-shadow-btn' >
+
+                    <Link to='/editPassword' > 
+                    <button className='text-primary text-center text-sm bg-lightGrey rounded-lg py-3 px-4 box-shadow-btn w-full' >
                         Cambiar contraseña
                     </button>
+                    </Link>
+                    
 
-                    <button className='text-primary text-center text-sm bg-lightGrey rounded-lg py-3 px-4 box-shadow-btn' >
+                    <button className='text-primary text-center text-sm bg-lightGrey rounded-lg py-3 px-4 box-shadow-btn w-full' >
                         Cambiar teléfono de confirmación
                     </button>
 
-                    <button className='text-primary text-center text-sm bg-lightGrey rounded-lg py-3 px-4 box-shadow-btn' >
+                    <button className='text-primary text-center text-sm bg-lightGrey rounded-lg py-3 px-4 box-shadow-btn w-full' >
                         Cambiar mail de ingreso
                     </button>
 
-                    <button className='text-white text-center text-sm bg-primary rounded-lg py-3 px-4 box-shadow-btn' >
+                    <button className='text-white text-center text-sm bg-primary rounded-lg py-3 px-4 box-shadow-btn w-full' onClick={logout}>
                         Cerrar sesión
                     </button>
 

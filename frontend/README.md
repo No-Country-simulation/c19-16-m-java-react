@@ -73,3 +73,54 @@ Backend:
 
 
 Enlaces del Proyecto: Enlaces relevantes al repositorio en GitHub, al sitio web (si corresponde) y otros enlaces importantes.
+
+
+Cambiar telefono.
+=================
+Cambiar número de teléfono
++ 34 815 3465 798 {telefono}
+A continuación puedes actualizar tu número telefonico.
+label: Número telefónico
+Te enviaremos un mail para confirmar tu identidad.
+
+Cambiar email
+=============
+Cambiar mail de ingreso
+domimarisol@gmail.com {email}
+A continuación puedes actualizar tu mail de ingreso.
+Ingresar nuevo mail de ingreso
+Te enviaremos un SMS a tu numero telefónico de verificación para confirmar tu identidad.
+
+Confirmación cambio de nombre
+=============================
+Tu cambio ha sido realizado
+Tu nuevo nombre y apellido que aparecerá en la pantalla es:
+María Soledad Domi
+
+Confirmación cambio de contraseña
+=================================
+Tu cambio de clave ha sido realizado con exito
+Recuerda que puedes recuperarla en caso de haberla olvidadado. 
+
+Cambiar telefono de confirmación
+================================
+Verifica tu nuevo número 
+Te enviamos un código al mail
+domimarisol@gmail.com {correo}
+
+
+Cambiar mail de ingreso2
+=======================
+Verifica tu nuevo mail de ingreso
+Te enviamos un codigo SMS al 
++ 34 815 3465 798 {telefono}
+
+
+Cambiar telefono de confirmación
+tu nuevo número de confirmacion es
++ 34 815 3465 888
+
+Cambiar mail de ingreso3
+Tu cambio ha sido realizado
+tu nuevo mail de confirmación es
+maridomi@gmail.com

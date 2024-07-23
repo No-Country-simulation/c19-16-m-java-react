@@ -19,9 +19,9 @@ import PayStepContainer from './pages/Servicespay/PayStepContainer.jsx';
 
 import {AssistantProvider} from '../src/Providers/AssistantProvider.jsx'
 import ProfilePage from './pages/ProfilePage/ProfilePage.jsx';
-
+import EditFullNamePage from './pages/EditFullNamePage/EditFullNamePage.jsx';
 import PrivateRoutes from './auth/PrivateRoutes.jsx';
-
+import EditPassword from './pages/EditPassword/EditPassword.jsx';
 
 function App() {
 
@@ -53,6 +53,8 @@ function App() {
               <Route path='/Pay' element={<Pay />} />
               <Route path='/PayStepContainer' element={<PayStepContainer />} />
               <Route path='Profile' element={<ProfilePage />} />
+              <Route path='editName' element={<EditFullNamePage/>} />
+              <Route path='editPassword' element={<EditPassword/>} />
             </Route>
 
             
