@@ -1,11 +1,13 @@
 
 import Header from '../../components/Header'
 import { useState } from 'react'
+
 import { useUser } from '../../Providers/UserProvider'
 
 const EditFullNamePage = () => {
 
   const [user, setUser] = useUser();
+
 
   const [name, setName] = useState('')
   const [surname, setSurname] = useState('')

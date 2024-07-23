@@ -17,8 +17,10 @@ import {useAssistant} from '../../Providers/AssistantProvider'
 import tooltips from '../../data/tooltipsText'
 import users from '../../data/data'
 import Footer from '../../../src/components/Footer'
+
 // FIXME: Cuando este el back. Quitarlo. 
 import { useUser} from '../../Providers/UserProvider';
+
 
 
 
