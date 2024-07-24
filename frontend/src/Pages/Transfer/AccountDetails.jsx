@@ -1,6 +1,6 @@
 
 import Header from '../../components/Header'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const AccountDails = ({updateFormData, setIsValidForm}) => {
 
@@ -11,6 +11,15 @@ const AccountDails = ({updateFormData, setIsValidForm}) => {
   const [bankNameError, setBankError] = useState('')
   
   const [validForm, setValidForm] = useState(false)
+
+
+  useEffect(() => {
+  
+    console.log('Me ejecuto');
+  
+  
+  }, [iban])
+  
 
 
   const checkIsValidForm = () => {
@@ -24,44 +33,52 @@ const AccountDails = ({updateFormData, setIsValidForm}) => {
 
   // Validaciones IBAN
   const handleIBAN = (event) => {
+    
     if (!event.target.value) {
         setIbanError('Debe indicar un numero de cuenta valido')
     } else {
-      setIbanError('')
-      checkIsValidForm()
+      setIbanError('')      
+      setIban(event.target.value)
     }
   }
 
   // Validaciones nombre de contacto
-  const handleContactName = (event) => {
-
+  const handleContactName = (event) => {    
     
-    
-    let nombreContact = event.target.value
-    
+    let nombreContact = event.target.value    
     const regex = /^[A-Z][a-zA-Z-' ]*$/;
-
-    if (nombreContact) {
-      
-      if (nombreContact.length < 3 || nombreContact.length > 20) {
-        
+    if (nombreContact) {      
+      if (nombreContact.length < 3 || nombreContact.length > 20) {        
         setContactNameError('El nombre del contacto debe de tener entre 3 y 20 caracteres')
       } else if (!regex.test(nombreContact)){
         setContactNameError('El nombre del contacto solo puede contener letras')
       } else {
         setContactNameError('')
       }
-
-
     } else {
       setContactNameError('')
     }
-
-
   }
 
+  // Validaciones nombre de banco
+  const handleBanKName = (event) => {
+    
+    let bankName = event.target.value
+    const regex = /^[A-Z][a-zA-Z-' ]*$/;
 
-  
+    if (bankName) {
+      if (bankName.length < 3 || bankName.length > 10) {
+        setBankError('El nombre del banco debe de tener entre 3 y 10 caracteres')
+      } else if (!regex.test(bankName)) {
+        setBankError('El nombre del banco solo puede tener letras')
+      } else {
+        setBankError('')
+      }
+    } else {
+      setBankError('')
+    }
+
+  }
   
   
   return (
@@ -89,17 +106,12 @@ const AccountDails = ({updateFormData, setIsValidForm}) => {
                 
                 </div>
                 {ibanerror && <div> <p className='text-sm text-red-600'>  {ibanerror} </p> </div>}
-              
-
-
-          
-
         </div>
 
-
+{/* Nombre de contacto */}          
         <div className='mx-auto w-11/12'>
           <p>  ¿Deseas guardar este contacto como transferencia frecuente? </p>
-{/* Nombre de contacto */}          
+
           <label htmlFor="" className='text-primary'> Nombre de contacto </label>
           <input
             name='contactName'
@@ -110,6 +122,7 @@ const AccountDails = ({updateFormData, setIsValidForm}) => {
           />
           {contactNameError && <div> <p className='text-sm text-red-600'>  {contactNameError} </p> </div>}
 
+{/* Nombre de Banco */}          
           <label htmlFor="" className='text-primary'> Nombre de banco destino </label>
 
           <input
@@ -117,8 +130,9 @@ const AccountDails = ({updateFormData, setIsValidForm}) => {
             type="text"
             placeholder='Ingresa el nombre del banco destino'
             className='w-full p-4 leading-tight bg-lightGrey text-gray-700 border-none focus:outline-none focus:shadow-outline'
-            onChange={updateFormData}
+            onChange={handleBanKName}
           />
+          {bankNameError && <div> <p className='text-sm text-red-600'>  {bankNameError} </p> </div>}
 
         </div>
 
