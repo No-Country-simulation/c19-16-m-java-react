@@ -6,30 +6,34 @@ const AccountDails = ({updateFormData, setIsValidForm}) => {
 
 
   const [iban, setIban] = useState()
-  const [ibanerror, setIbanError] = useState('')
-  const [contactNameError, setContactNameError] = useState('')
-  const [bankNameError, setBankError] = useState('')
+  const [contactName, setContactName] = useState()
+  const [bankName, setBankName] = useState();
+
+  const [ibanerror, setIbanError] = useState(null)
+  const [contactNameError, setContactNameError] = useState(null)
+  const [bankNameError, setBankError] = useState(null)
   
-  const [validForm, setValidForm] = useState(false)
+  
 
 
   useEffect(() => {
-  
-    console.log('Me ejecuto');
-  
-  
-  }, [iban])
-  
 
-
-  const checkIsValidForm = () => {
+    console.log(ibanerror, contactNameError, bankNameError );
     
     if (!ibanerror && !contactNameError && !bankNameError) {      
+      console.log('Formulario correcto');
       setIsValidForm(true)      
     } else {
-      setIsValidForm(false)      
-    }
-  }
+      setIsValidForm(false)          }  
+    }, [iban, contactName, bankName])
+  
+  
+  
+  
+
+  // Cada vez que cambia alguno de los campos, comprueba que todos esten correctos
+  // y da por correcto el formulario. 
+
 
   // Validaciones IBAN
   const handleIBAN = (event) => {
