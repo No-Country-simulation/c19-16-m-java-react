@@ -2,13 +2,11 @@ import React, { useState } from 'react';
 import '../../css/main.css'
 import Header from '../../components/Header'
 import { FiSearch } from 'react-icons/fi';
-import { IoMdClose } from 'react-icons/io';
-import { FiStar } from 'react-icons/fi';
 import user1Photho from '../../assets/Images/user1.jpg'
 import Icon from '../../components/Icon/Icon'
 import Footer from '../../components/Footer';
-import useTranfer from '../../Hooks/useTranfer';
 import { Link } from 'react-router-dom'
+import '../../css/main.css'
 
 const Transfer = () => {
 
@@ -46,19 +44,19 @@ const Transfer = () => {
 
 
         <div className='flex flex-col justify-center space-y-10'>
-          <h1 className='text-center mt-10'> Transferencias </h1>
-          <div className="w-11/12 max-w-screen-lg mx-auto grid grid-cols-2 gap-4 ">
-            <div>
-              <div className="flex flex-col items-center justify-center text-center bg-lightGrey text-black rounded-lg p-5 shadow-lg transition duration-300 ease-in-out hover:bg-opacity-75 focus:outline-none" tabindex="0" aria-label="Home">
+          <h1 className='text-center mt-10 text-[22px] '> Transferencias </h1>
+          <div className="w-11/12 max-w-screen-lg mx-auto  ">
+            
+              <div className="flex flex-col items-center justify-center text-center bg-lightGrey text-black rounded-lg p-5 shadow-lg transition duration-300 ease-in-out hover:bg-opacity-75 focus:outline-none box-shadow-btn">
 
-                <Link to="/TransferStepContainer"> <span> Transferir a una nueva cuenta nacional </span> </Link>
+                <Link to="/TransferStepContainer"> <span> Transferir a una nueva cuenta </span> </Link>
               </div>
-            </div>
-            <div>
+            
+            {/* <div>
               <div className="flex flex-col items-center justify-center text-center bg-lightGrey text-black rounded-lg p-5 shadow-lg transition duration-300 ease-in-out hover:bg-opacity-75 focus:outline-none" tabindex="0" aria-label="Home">
                 <span> Transferir a una nueva cuenta internacional </span>
               </div>
-            </div>
+            </div> */}
           </div>
 
           <h2 className='text-center '> Transferencias frecuentes </h2>
