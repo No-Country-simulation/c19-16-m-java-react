@@ -10,20 +10,38 @@ import { useState } from 'react'
 
 const TransferStepContainer = () => {
 
-  
+
+ 
 
   const [step, setStep] = useState(1)
 
-  const [formData, setFormData] = useState([])
+  const [formData, setFormData] = useState({
+    'Iban': '',
+    'contactName': '',
+    'bankName': '',
+    'amount': 0
+  })
 
   const [isValidForm, setIsValidForm] = useState(false)
 
-  console.log('isValidForm ', isValidForm);
+  
 
 
-  const updateFormData = (event) => {
-    setFormData( (prevFormData) => [...prevFormData, {[event.target.name]: event.target.value}])
+  const updateFormData = (data) => {
+  
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      ...data,
+    }));
+    
+   
+
   }
+
+
+   
+    
+
 
   const nextStep = () => {
     
@@ -48,10 +66,10 @@ const TransferStepContainer = () => {
         return <AccountDetails updateFormData={updateFormData} setIsValidForm={setIsValidForm}/>
 
       case 2:
-        return <AmountDetails />
+        return <AmountDetails updateFormData={updateFormData} setIsValidForm={setIsValidForm}/>
 
       case 3:
-        return <Confirmation />
+        return <Confirmation data={formData}/>
 
       case 4:
         return <Success />

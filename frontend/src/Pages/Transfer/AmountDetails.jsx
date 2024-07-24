@@ -1,16 +1,53 @@
-import React from 'react'
+import { useState, useEffect } from 'react'
 import Header from '../../components/Header'
 
-const AmountDetails = () => {
+const AmountDetails = ({updateFormData, setIsValidForm}) => {
 
+  
+  //FIXME: Cuando este el back, sustituir por la canitidad devuelta. 
   const data = {
-    balance: '5435,00'
+    balance: 5435.00
   }
 
-  return (
-    <>
+  const [amount, setAmount] = useState(0)
+  const [amountError, setAmountError] = useState('')
+  
 
-    
+  useEffect(() => {  
+
+    console.log('amount ', amount);
+
+    if (amount > 0  && !amountError ) {            
+      updateFormData({'amount': amount })
+      setIsValidForm(true)      
+    } else {
+      setIsValidForm(false)          
+    }  
+  
+}, [amount])
+
+  const handleAmount = (event) => {
+
+    let importe = parseInt(event.target.value)   
+
+    setAmount(importe)
+
+    if (importe <= 0 ) {
+      setAmountError('El importe debe ser mayor que cero')
+    } else if (importe > data.balance) {
+      setAmountError('El importe debe ser inferior o igual al Monto')
+    }
+
+    console.log('amountError > ', amountError);
+
+
+
+
+  }
+
+
+  return (
+    <>    
     
     <div className='flex flex-col items-center justify-between min-h-screen'>
 
@@ -26,11 +63,14 @@ const AmountDetails = () => {
           type="number"
           className='text-5xl text-center '
           placeholder="$0,00 usd"
-          min="0"
+          onBlur={handleAmount}
+
           // step="0.01"
         />
 
       <p> Monto disponible ${data.balance} usd </p>
+
+      {amountError && <div> <p className='text-sm text-red-600'> {amountError} </p> </div> }
 
     </div>
 

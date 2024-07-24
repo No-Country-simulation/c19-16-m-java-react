@@ -22,6 +22,7 @@ const AccountDails = ({updateFormData, setIsValidForm}) => {
 
       if (!ibanerror && !contactNameError && !bankNameError && iban) {      
         console.log('Formulario correcto');
+        updateFormData({'Iban': iban, 'contactName': contactName, 'bankName': bankName })
         setIsValidForm(true)      
       } else {
         setIsValidForm(false)          
