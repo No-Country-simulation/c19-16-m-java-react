@@ -52,12 +52,12 @@ const Confirmation = ({data}) => {
       </div>
       
 
-      <div className='w-full px-6 pb-4'>
+      {/* <div className='w-full px-6 pb-4'>
         <div className='flex justify-end gap-3 items-center'>
           <p> Atras </p>
           <button className='bg-primary text-white  py-2 px-8 rounded-lg shadow' > Confirmar </button>
           </div>
-      </div>
+      </div> */}
 
 
 
