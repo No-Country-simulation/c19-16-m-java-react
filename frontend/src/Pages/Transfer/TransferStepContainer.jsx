@@ -101,11 +101,16 @@ const TransferStepContainer = () => {
       <div className='w-full px-6 pb-4 mt-auto'>
         <div className='flex justify-end gap-3 items-center'>
           
-          <button onClick={prevStep}> Atras </button>
+          { stepButtons[step-1].stepName != 'Sucess' 
+            ? <button onClick={prevStep}> Atras </button>
+            : <button> Compartir </button>
+          }
+          
           <button 
             className={` ${isValidForm ? 'bg-primary': 'bg-darkGrey'} text-white  py-2 px-8 rounded-lg shadow`} 
             onClick={nextStep}> {stepButtons[step-1].buttonName }  
           </button>
+
         </div>
       </div>
 
