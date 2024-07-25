@@ -17,6 +17,7 @@ import Profile from './Profile.svg?react'
 import House from './House.svg?react'
 import TransfersFooter from './TransfersFooter.svg?react'
 import ServicesFooter from './ServicesFooter.svg?react'
+import TrashCan from './TrashCan.svg?react'
 
 export default function Icon({type}) {
     return (
@@ -40,6 +41,7 @@ export default function Icon({type}) {
         {type === "TransfersFooter" && <TransfersFooter/>}
         {type === "ServicesFooter" && <ServicesFooter/>}
         {type === "Profile" && <Profile/>}
+        {type === "TrashCan" && <TrashCan/>}
         
         </>
             
