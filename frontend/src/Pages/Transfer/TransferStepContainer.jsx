@@ -81,7 +81,7 @@ const TransferStepContainer = () => {
 
       case 4:
         //TODO: Enviar los datos al back. Si la respuesta es correcta, renderizar <Success> si no, usar otra pantalla. 
-        return <Success />
+        return <Success data={formData}/>
 
       default:
         return navigate('/home')
@@ -100,9 +100,12 @@ const TransferStepContainer = () => {
 
       <div className='w-full px-6 pb-4 mt-auto'>
         <div className='flex justify-end gap-3 items-center'>
-
+          {stepName}
           <button onClick={prevStep}> Atras </button>
-          <button className={` ${isValidForm ? 'bg-primary': 'bg-darkGrey'} text-white  py-2 px-8 rounded-lg shadow`} onClick={nextStep}> {stepButtons[step-1].buttonName }  </button>
+          <button 
+            className={` ${isValidForm ? 'bg-primary': 'bg-darkGrey'} text-white  py-2 px-8 rounded-lg shadow`} 
+            onClick={nextStep}> {stepButtons[step-1].buttonName }  
+          </button>
         </div>
       </div>
 

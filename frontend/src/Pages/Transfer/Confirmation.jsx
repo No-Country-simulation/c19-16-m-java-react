@@ -8,13 +8,6 @@ import user1Photho from '../../assets/Images/user1.jpg'
 const Confirmation = ({data}) => {
 
   //FIXME: Sustituir el objeto por lo recuperado en el back. 
-  const successData = {
-    image: '', 
-    amount: '$120,00 usd',
-    beneficiaryName: 'Ana Morales',
-    bankName: 'Banco BBVA',
-    UBAN: '0105697501000004261522'
-  }
 
   console.log(data);
 
@@ -52,12 +45,6 @@ const Confirmation = ({data}) => {
       </div>
       
 
-      {/* <div className='w-full px-6 pb-4'>
-        <div className='flex justify-end gap-3 items-center'>
-          <p> Atras </p>
-          <button className='bg-primary text-white  py-2 px-8 rounded-lg shadow' > Confirmar </button>
-          </div>
-      </div> */}
 
 
 
