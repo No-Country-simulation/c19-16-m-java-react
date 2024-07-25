@@ -18,14 +18,7 @@ const TransferStepContainer = () => {
  
 
 
- 
-
   const [step, setStep] = useState(1)
-
-
-
-
-  const navigate = useNavigate();
 
 
 
@@ -35,6 +28,7 @@ const TransferStepContainer = () => {
     'bankName': '',
     'amount': 0
   })
+
 
   const stepButtons = [
     { 'id': 1,  stepName: 'AccountDetails', buttonName: 'Siguiente'}, 
@@ -53,9 +47,6 @@ const TransferStepContainer = () => {
   const updateFormData = (data) => {
   
 
-
-
-    // Copia en el array original las propiedades con su valor. 
 
 
     setFormData((prevFormData) => ({
