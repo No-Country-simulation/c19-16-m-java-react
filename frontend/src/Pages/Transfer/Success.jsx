@@ -28,7 +28,7 @@ const Success = ({data}) => {
           <p> Transferencia realizada a: </p>
           
           <div className='mt-6 flex justify-center mb-6'>
-            <img src={user1Photho} alt="" />
+            <img className='border-[#00CD07] border-[5px] rounded-full' src={user1Photho} alt="" />
           </div> 
           
           <div>
