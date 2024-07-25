@@ -50,7 +50,7 @@ const Home = () => {
             <Header />
 
 
-            <section id='main-container' className='container flex flex-col  items-center space-y-5 '>
+            <section id='main-container' className='flex flex-col  items-center space-y-5 '>
                 <div className='flex justify-around items-center gap-5' >
 
                     <div className='flex items-center justify-center gap-10 pt-3'>

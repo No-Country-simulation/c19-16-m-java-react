@@ -6,37 +6,80 @@ import user1Photho from '../../assets/Images/user1.jpg'
 import Icon from '../../components/Icon/Icon'
 import Footer from '../../components/Footer';
 import { Link } from 'react-router-dom'
+
+import DeleteFavoriteTranstation from '../../components/DeleteFavoriteTranstation';
 import '../../css/main.css'
+
+
 
 const Transfer = () => {
 
 
-  const transfers = [
-
-    { image: 'user1', name: 'Ana Morales', bank: 'Banco Bbva' },
-    { image: 'user2', name: 'Antonio Navarro', bank: 'Caixa Bbva' },
-    { image: 'user3', name: 'Gloria Ramos', bank: 'Mercado Libre Bank' },
-    { image: 'user4', name: 'Paul Perez', bank: 'Banco One' },
-
-  ]
 
 
+  const [showConfirmation, setShowConfirmation] = useState(false)
+  const [id, setId] = useState(0)
+  
+  const [transfers, setTransfers] = useState (
+    [
+      { id:1, image: 'user1', name: 'Ana Morales', bank: 'Banco Bbva' },
+      { id:2, image: 'user2', name: 'Antonio Navarro', bank: 'Caixa Bbva' },
+      { id:3, image: 'user3', name: 'Gloria Ramos', bank: 'Mercado Libre Bank' },
+      { id:4, image: 'user4', name: 'Paul Perez', bank: 'Banco One' }
+    ]
 
-
-
-
-
+  )
+  
   const [searchQuery, setSearchQuery] = useState('');
 
+  
+
+  
+  const deleteTransition = (id) => {    
+    
+    console.log('id en deleteTransition = ', id);
+    toggleModal()
+    setId(id)
+    
+
+
+    
+  }
+
+  const confirmDelete = () => {
+
+      console.log('confirm delete');
+      console.log('id ', id );
+      console.log();
+
+    const index = transfers.findIndex(transfer => transfer.id == id);
+
+    console.log('index = ', index);
+
+    if (index !== -1) {
+       console.log('borro elemeno ', index);
+       transfers.splice(index, 1);
+    }
+    toggleModal()
+  }
+
+
+
+  const toggleModal = () => {    
+      setShowConfirmation(!showConfirmation)      
+    
+  }
 
 
   return (
     <>
 
+     {showConfirmation && 
+      <DeleteFavoriteTranstation  
+        toggleModal={toggleModal} 
+        confirmDelete={confirmDelete}
 
-
-
-
+      />  }
 
       <Header />
 
@@ -89,8 +132,9 @@ const Transfer = () => {
                     <Icon type={'StarFilled'} />
                   </button>
 
-                  <button>
-                    <Icon type={'KebabMenu'} />
+                  <button onClick={() => deleteTransition(transfer.id)} >
+                  <Icon type={'TrashCan'} /> 
+                    
                   </button>
                 </div>
 
@@ -98,12 +142,8 @@ const Transfer = () => {
             ))}
 
           </div>
-
         </div>
-
-
       </div>
-
 
       <Footer />
 

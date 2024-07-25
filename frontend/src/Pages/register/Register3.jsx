@@ -62,6 +62,7 @@ export default function Register3() {
                 password: password
             });
             if (response.status === 200) {
+                localStorage.setItem('token', response.data.token);
                 navigate('/Home');
             } else {
                 setMessage('Error al configurar la contraseña');
