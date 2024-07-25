@@ -16,3 +16,41 @@
 .box-shadow-btn {
     box-shadow: 0px 4px 2px 0px rgba(0, 0, 0, 0.25);
 }
+
+.primary-button {
+    border-radius: 10px;
+    background: #242054;
+    box-shadow: 0px 4px 2px 0px rgba(0, 0, 0, 0.25);
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+    width: 156px;
+    height: 40px;   
+}
+
+.secondary-button {
+    border-radius: 10px;
+    background: var(--Dark-Gray, #575A5E);
+    width: 156px;
+    height: 40px;
+    color: #fff;   
+
+}
+
+.input {
+    border-radius: 10px;
+    border: 1px solid #000;
+    background: var(--Schemes-On-Primary, #FFF);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+}
+
+
+
+/* material-theme/body/large */
+
+
+
+; /* 150% */

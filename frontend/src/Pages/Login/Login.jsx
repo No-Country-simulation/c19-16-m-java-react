@@ -119,14 +119,11 @@ export default function LoginPage() {
 
 
   return (
-    <div className='flex flex-col items-center justify-center min-h-screen bg-white'>
+    <div className='flex flex-col items-center justify-center min-h-screen bg-white space-y-4'>
 
-      {/* Logo Essential Bank */}
-      <div className='mb-8 text-center'>
-        <h1 className='text-6xl font-bold text-blue-500'>Essential</h1>
-        <h2 className='text-4xl font-bold text-blue-700'>Bank</h2>
-      </div>
-
+      {/* Logo */}
+      <img src="/Logo.png" className='h-[57px]' alt="" />
+      
       {/* Bievenido */}
 
       <div>
