@@ -28,6 +28,16 @@ public class UserService {
         return userRepository.findAll();
     }
 
+    public User deleteUser(Long id) {
+        Optional<User> optionalUser = userRepository.findById(id);
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            userRepository.delete(user);
+            return user;
+        }
+        return null;
+    }
+
     public Optional<User> findUserByPhoneNumber(String phoneNumber) {
         return userRepository.findByPhoneNumber(phoneNumber);
     }

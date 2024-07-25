@@ -9,6 +9,7 @@ const Confirmation = ({data}) => {
 
   //FIXME: Sustituir el objeto por lo recuperado en el back. 
 
+
   console.log(data);
 
   return (
