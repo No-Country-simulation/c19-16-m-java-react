@@ -14,8 +14,6 @@ const AmountDetails = ({updateFormData, setIsValidForm}) => {
   
 
   useEffect(() => {  
-    
-    
     console.log('amount ', amount);
 
     if (amount > 0  && !amountError ) {            
