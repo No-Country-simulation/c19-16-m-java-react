@@ -17,11 +17,16 @@ const TransferStepContainer = () => {
 
  
 
+
+ 
+
   const [step, setStep] = useState(1)
 
 
 
+
   const navigate = useNavigate();
+
 
 
   const [formData, setFormData] = useState({
@@ -31,14 +36,13 @@ const TransferStepContainer = () => {
     'amount': 0
   })
 
-
-
   const stepButtons = [
     { 'id': 1,  stepName: 'AccountDetails', buttonName: 'Siguiente'}, 
     { 'id': 2,  stepName: 'AmountDetails', buttonName:  'Siguiente'}, 
     { 'id': 3,  stepName: 'Confirmation', buttonName:   'Confirmar'}, 
     { 'id': 4,  stepName: 'Sucess', buttonName: 'Finalizar'}, 
   ]
+
 
 
   const [isValidForm, setIsValidForm] = useState(false)
@@ -50,7 +54,9 @@ const TransferStepContainer = () => {
   
 
 
+
     // Copia en el array original las propiedades con su valor. 
+
 
     setFormData((prevFormData) => ({
       ...prevFormData,
@@ -125,6 +131,7 @@ const TransferStepContainer = () => {
             className={` ${isValidForm ? 'bg-primary': 'bg-darkGrey'} text-white  py-2 px-8 rounded-lg shadow`} 
             onClick={nextStep}> {stepButtons[step-1].buttonName }  
           </button>
+
 
 
         </div>
