@@ -172,12 +172,12 @@ export default function Register() {
             console.error('Error:', error);
         }
     };
-
+// Comentario de prueba. 
     return (
         <div className='flex flex-col items-center justify-center min-h-screen bg-white'>
             {/* Logo Essential Bank */}
             <div className='mb-8 text-center'>
-                <h1 className='text-6xl font-bold text-blue-500'>Essential</h1>
+                <h1 className='text-6xl font-bold text-blue-500'>Essentialll</h1>
                 <h2 className='text-4xl font-bold text-blue-700'>Bank</h2>
             </div>
 
