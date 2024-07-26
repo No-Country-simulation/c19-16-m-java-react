@@ -10,6 +10,10 @@ import { Link } from 'react-router-dom'
 import DeleteFavoriteTranstation from '../../components/DeleteFavoriteTranstation';
 import '../../css/main.css'
 
+import DeleteFavoriteTranstation from '../../components/DeleteFavoriteTranstation';
+import '../../css/main.css'
+
+
 
 
 const Transfer = () => {
