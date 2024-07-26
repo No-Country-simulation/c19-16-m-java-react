@@ -18,16 +18,10 @@ const TransferStepContainer = () => {
  
 
 
- 
 
   const [step, setStep] = useState(1)
 
 
-  
-
-
-
-  const navigate = useNavigate();
 
 
 
@@ -54,6 +48,7 @@ const TransferStepContainer = () => {
 
 
   const updateFormData = (data) => {
+
 
     setFormData((prevFormData) => ({
       ...prevFormData,
