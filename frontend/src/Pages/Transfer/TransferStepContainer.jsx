@@ -18,7 +18,10 @@ const TransferStepContainer = () => {
  
 
 
+
   const [step, setStep] = useState(1)
+
+
 
 
 
@@ -45,8 +48,6 @@ const TransferStepContainer = () => {
 
 
   const updateFormData = (data) => {
-  
-
 
 
     setFormData((prevFormData) => ({

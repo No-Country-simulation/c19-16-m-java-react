@@ -6,10 +6,11 @@ import user1Photho from '../../assets/Images/user1.jpg'
 import Icon from '../../components/Icon/Icon'
 import Footer from '../../components/Footer';
 import { Link } from 'react-router-dom'
-import '../../css/main.css'
 
 import DeleteFavoriteTranstation from '../../components/DeleteFavoriteTranstation';
 import '../../css/main.css'
+
+
 
 
 
@@ -65,11 +66,33 @@ const Transfer = () => {
   }
 
 
+    console.log('index = ', index);
+
+
+    if (index !== -1) {
+       console.log('borro elemeno ', index);
+       transfers.splice(index, 1);
+    }
+    toggleModal()
+  }
 
   const toggleModal = () => {    
       setShowConfirmation(!showConfirmation)      
     
   }
+
+
+
+  const toggleModal = () => {    
+      setShowConfirmation(!showConfirmation)      
+    
+  }
+
+
+     {showConfirmation && 
+      <DeleteFavoriteTranstation  
+        toggleModal={toggleModal} 
+        confirmDelete={confirmDelete}
 
 
   return (
@@ -79,6 +102,7 @@ const Transfer = () => {
       <DeleteFavoriteTranstation  
         toggleModal={toggleModal} 
         confirmDelete={confirmDelete}
+
 
       />  }
 
