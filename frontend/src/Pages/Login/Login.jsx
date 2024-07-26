@@ -148,7 +148,7 @@ export default function LoginPage() {
           <div className='flex justify-center'>
             <button type='submit' 
               disabled={isDisabled}
-              className={`w-full px-4 py-2 mb-4 text-black secondary-button  rounded  `}
+              className={`w-full px-4 py-2 mb-4 text-black  secondary-button  rounded  `}
               ref={IngresarBtn}
             >
               Ingresar
