@@ -13,6 +13,9 @@ export default function LoginPage() {
   const navigate = useNavigate();
   const [user, setsetUser] = useUser()
   
+  console.log('import.meta.env.MODE ', import.meta.env.VITE_API_URL_PROD);
+  const API_URL_PROD = import.meta.env.VITE_API_URL_PROD
+  
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -82,7 +85,14 @@ export default function LoginPage() {
             console.log('email: ', email);
             console.log('password: ', password);
 
-            const response = await axios.post(`https://plataforma-i.onrender.com/users/login?email=${email}&password=${password}`, {
+            // if (import.meta.env.MODE == 'd') {
+              
+            // }            
+
+            
+
+            // const response = await axios.post(`https://essential-bank-back.vercel.app/users/login`, {
+              const response = await axios.post(`${API_URL_PROD}/users/login`, {
                 email: email,
                 password: password,
             });
@@ -90,7 +100,9 @@ export default function LoginPage() {
             console.log("Respuesta de la API:", response);
 
             if (response.status === 200) {
-                navigate("/Home");
+              setsetUser(response.data.user)  
+              navigate("/Home");
+
             } else {
                 setPasswordError('Correo electrónico o contraseña incorrectos');
             }

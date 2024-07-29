@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../css/main.css'
 import Header from '../../components/Header'
 import { FiSearch } from 'react-icons/fi';
@@ -7,19 +7,43 @@ import Icon from '../../components/Icon/Icon'
 import Footer from '../../components/Footer';
 import { Link } from 'react-router-dom'
 import '../../css/main.css'
-
+import { useUser} from '../../Providers/UserProvider'
+import axios from 'axios';
 const Transfer = () => {
 
 
-  const transfers = [
+  // const transfers = [
 
-    { image: 'user1', name: 'Ana Morales', bank: 'Banco Bbva' },
-    { image: 'user2', name: 'Antonio Navarro', bank: 'Caixa Bbva' },
-    { image: 'user3', name: 'Gloria Ramos', bank: 'Mercado Libre Bank' },
-    { image: 'user4', name: 'Paul Perez', bank: 'Banco One' },
+  //   { image: 'user1', name: 'Ana Morales', bank: 'Banco Bbva' },
+  //   { image: 'user2', name: 'Antonio Navarro', bank: 'Caixa Bbva' },
+  //   { image: 'user3', name: 'Gloria Ramos', bank: 'Mercado Libre Bank' },
+  //   { image: 'user4', name: 'Paul Perez', bank: 'Banco One' },
 
-  ]
+  // ]
 
+  const [user, setsetUser] = useUser()
+  const [transfers, setTransfers] = useState();
+
+  const API_URL_PROD = import.meta.env.VITE_API_URL_PROD
+
+    
+
+  useEffect(() => {
+      
+      if (!user._id) {
+          const id = localStorage.getItem('id')
+          console.log('id = ', id);                        
+          getTransfer(id).then((data) => setTransfers(data))
+          
+      }
+
+      async function  getTransfer(id) {
+          const response = await axios.get(`${API_URL_PROD}/transations/transfers/${id}`)
+          console.log('response ', response);
+          return response.data
+      }
+  
+  }, [])
 
 
 
@@ -73,7 +97,7 @@ const Transfer = () => {
 
           <div className='flex flex-col items-center space-y-6 '>
 
-            {transfers.map((transfer, index) => (
+            {transfers?.map((transfer, index) => (
 
               <div className='flex items-center  justify-between gap-5 mx-auto w-11/12 '>
 

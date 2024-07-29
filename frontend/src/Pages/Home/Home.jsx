@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { FaTimes } from 'react-icons/fa';
-
+import axios from 'axios';
 
 import { } from 'react-icons/bi';
 import profilePicture from '../../assets/Images/Photo.jpg'
@@ -30,7 +30,28 @@ const Home = () => {
 
     const [user, setsetUser] = useUser()
 
+    console.log('user ', user);
+    const API_URL_PROD = import.meta.env.VITE_API_URL_PROD
 
+    
+
+    useEffect(() => {
+        
+        if (!user._id) {
+            const id = localStorage.getItem('id')
+            console.log('id = ', id);                        
+            getUserInfo(id).then((data) => setsetUser(data))
+            
+        }
+
+        async function  getUserInfo(id) {
+            const response = await axios.get(`${API_URL_PROD}/users/getUser/${id}`)
+            console.log('response ', response);
+            return response.data
+        }
+    
+    }, [])
+    
 
 
     const [assistantActive, setAssistantActive] = useAssistant();
@@ -92,7 +113,8 @@ const Home = () => {
                 <section id='account-info'>
                     <p> El saldo actual de tu cuenta es </p>
                     <ToolTip id={'balanceDisplay'}>  
-                        <p className='text-[36px]'> {user.balance} </p>
+                        <p className='text-[36px]'> {user.accounts[0].Balance }
+                         </p>
                     </ToolTip>
                 </section>
 
