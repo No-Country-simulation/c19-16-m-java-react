@@ -11,13 +11,34 @@ export default function Register2() {
 
     const handleVerify = async (e) => {
         e.preventDefault();
+
+        
+
+        console.log('email: ', email);
+        console.log('token: ', codigo);
+        
+
+        const data = {
+            email: email,
+            token: codigo
+        }
+
+            let URL_BASE = ''
+        if (import.meta.env.MODE == 'development') {
+            URL_BASE = 'http://localhost:5000'
+          } else {
+             URL_BASE = import.meta.env.VITE_API_URL_PROD
+          }
+
+          console.log('URL_BASE >> ', URL_BASE);
+
+
         try {
-            const response = await axios.post('https://plataforma-i.onrender.com/users/verify', null, {
-                params: {
-                    email: email,
-                    token: codigo
-                }
-            });
+
+
+
+            const response = await axios.post(`${URL_BASE}/otp/checkToken`,  data) 
+            
             if (response.status === 200) {
                 navigate('/RegisterPaso3', { state: { email: email } });
             } else {

@@ -8,10 +8,15 @@ import axios from 'axios';
 
 
 export default function LoginPage() {
+
+  console.log('VITE_API_URL_PROD >>> ', import.meta.env.VITE_API_URL_PROD);
   
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const [user, setsetUser] = useUser()
+  
+  console.log('import.meta.env.MODE ', import.meta.env.VITE_API_URL_PROD);
+  const API_URL_PROD = import.meta.env.VITE_API_URL_PROD
   
 
   const togglePasswordVisibility = () => {
@@ -79,20 +84,37 @@ export default function LoginPage() {
             console.log('email: ', email);
             console.log('password: ', password);
 
-            const response = await axios.post('https://plataforma-i.onrender.com/users/login', {
-                email: email,
-                password: password,
-            }, {
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
+
+            
+            const data = {
+              email: email,
+              password: password,
+            }
+            
+            
+            let URL_BASE = ''
+            
+            if (import.meta.env.MODE == 'development') {
+              URL_BASE = 'http://localhost:5000'
+            } else {
+              URL_BASE = import.meta.env.VITE_API_URL_PROD
+            }
+
+            console.log('URL_BASE >> ', URL_BASE);
+
+            // const response = await axios.post(`https://essential-bank-back.vercel.app/users/login`, {
+              const response = await axios.post(`${URL_BASE}/users/login`, data)
+            
+
 
             console.log("Respuesta de la API:", response);
 
             if (response.status === 200) {
-                navigate("/Home");
-                localStorage.setItem('token', response.data.token);
+
+              setsetUser(response.data.user)  
+              navigate("/Home");
+
+
             } else {
                 setPasswordError('Correo electrónico o contraseña incorrectos');
             }

@@ -1,6 +1,10 @@
 
 import Header from '../../components/Header'
 import ServicioFoto from '../../assets/Images/servicio.png'
+import { useAssistant } from '../../Providers/AssistantProvider';
+import { useState } from 'react';
+import VirtualAssistantModal from '../../components/VirtualAssistantModal';
+import ToolTip from '../../components/ToolTip';
 
 const SuccessPay = () => {
 
@@ -13,9 +17,18 @@ const SuccessPay = () => {
         description: 'Departamento de los sauces'
     }
 
+    const [assistantActive, setAssistantActive] = useAssistant();
+
+    const [isVisible, setVisible] = useState(true)
+
+
     return (
 
         <>
+
+            {assistantActive && <VirtualAssistantModal />}
+
+
             <div className='flex flex-col items-center justify-between min-h-screen'>
 
                 <Header />
@@ -25,17 +38,18 @@ const SuccessPay = () => {
                     <h2 className='text-center'> ¡Listo! </h2>
                     <p> Pago realizado  a: </p>
 
-                    <div className='mt-6 flex justify-center mb-6'>
-                        <img src={ServicioFoto} alt="" />
-                    </div>
+                    <ToolTip id={"ShareData"}>
+                        <div className='mt-6 flex justify-center mb-6'>
+                            <img src={ServicioFoto} alt="" />
+                        </div>
 
-                    <div>
-                        <span > {successData.amount} </span>
-                        <p id='beneficiary'> {successData.ServiceName} </p>
-                        <p id='bank'> {successData.description} </p>
+                        <div>
+                            <span > {successData.amount} </span>
+                            <p id='beneficiary'> {successData.ServiceName} </p>
+                            <p id='bank'> {successData.description} </p>
 
-                    </div>
-
+                        </div>
+                    </ToolTip>
                 </div>
 
 

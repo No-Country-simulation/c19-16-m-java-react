@@ -25,6 +25,7 @@ const TransferStepContainer = () => {
 
 
 
+
   const [formData, setFormData] = useState({
     'Iban': '',
     'contactName': '',
@@ -62,8 +63,6 @@ const TransferStepContainer = () => {
 
    
     
-
-
   const nextStep = () => {
     
     if (isValidForm) { 
