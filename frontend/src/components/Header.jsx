@@ -31,7 +31,8 @@ const Header = () => {
         {/*  Si hace clic en el logo, se redirecciona a Home */}
           <div className='flex justify-center grow cursor-pointer'>
           <Link to="/Home">     
-            <Icon type='Logo'/>        
+            {/* <Icon type='Logo'/>         */}
+            <img src="/Logo_Header.png" className='h-[34px] w-[100px]' alt="" />
           </Link>
           </div>
         

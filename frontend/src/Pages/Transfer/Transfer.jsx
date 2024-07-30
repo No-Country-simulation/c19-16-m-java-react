@@ -7,6 +7,7 @@ import Icon from '../../components/Icon/Icon'
 import Footer from '../../components/Footer';
 import { Link } from 'react-router-dom'
 import '../../css/main.css'
+
 import { useUser} from '../../Providers/UserProvider'
 import axios from 'axios';
 const Transfer = () => {
@@ -45,22 +46,49 @@ const Transfer = () => {
   
   }, [])
 
+  
+  const deleteTransition = (id) => {           
+    toggleModal()
+    setId(id)   
+    
+  }
+
+  const confirmDelete = () => {
+
+    const index = transfers.findIndex(transfer => transfer.id == id);
+    console.log('index = ', index);
+
+    if (index !== -1) {
+       console.log('borro elemeno ', index);
+       transfers.splice(index, 1);
+    }
+    toggleModal()
+  }
+
+
+  
 
 
 
 
+  const toggleModal = () => {    
+      setShowConfirmation(!showConfirmation)      
+    
+  }
 
-  const [searchQuery, setSearchQuery] = useState('');
 
 
 
   return (
     <>
 
+     {showConfirmation && 
+      <DeleteFavoriteTranstation  
+        toggleModal={toggleModal} 
+        confirmDelete={confirmDelete}
 
 
-
-
+      />  }
 
       <Header />
 
@@ -113,8 +141,9 @@ const Transfer = () => {
                     <Icon type={'StarFilled'} />
                   </button>
 
-                  <button>
-                    <Icon type={'KebabMenu'} />
+                  <button onClick={() => deleteTransition(transfer.id)} >
+                  <Icon type={'TrashCan'} /> 
+                    
                   </button>
                 </div>
 
@@ -122,17 +151,13 @@ const Transfer = () => {
             ))}
 
           </div>
-
         </div>
-
-
       </div>
-
 
       <Footer />
 
     </>
   )
-}
 
+}
 export default Transfer

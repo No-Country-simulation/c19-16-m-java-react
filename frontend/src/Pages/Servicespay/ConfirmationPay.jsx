@@ -2,6 +2,10 @@
 import Header from '../../components/Header'
 import ServicioFoto from '../../assets/Images/servicio.png'
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
+import { useAssistant } from '../../Providers/AssistantProvider'
+import VirtualAssistantModal from '../../components/VirtualAssistantModal'
+import ToolTip from '../../components/ToolTip'
 
 
 
@@ -14,9 +18,13 @@ const ConfirmationPay = () => {
         ServiceName: 'Compañia de Luz',
         description: 'Departamento de los sauces'
     }
+    const [assistantActive, setAssistantActive] = useAssistant();
+
+    const [isVisible, setVisible] = useState(true)
 
     return (
         <>
+            {assistantActive && <VirtualAssistantModal />}
 
 
 
@@ -28,21 +36,21 @@ const ConfirmationPay = () => {
 
                 <div className='text-center spacey-y-6 flex-grow mt-7 w-11/12 '>
 
+                    <ToolTip id={"ConfirmData"}>
+                        <div className='flex items-center mt-14 gap-4 '>
+                            <div className='mt-6 flex justify-center mb-6'>
+                                <img src={ServicioFoto} alt="" />
+                            </div>
 
-                    <div className='flex items-center mt-14 gap-4 '>
-                        <div className='mt-6 flex justify-center mb-6'>
-                            <img src={ServicioFoto} alt="" />
+                            <div className='text-left'>
+                                <span id='amount' className='text-2xl font-medium text-primary'> {successData.amount} </span>
+                                <p id='beneficiary'> {successData.ServiceName} </p>
+                                <p className='text-sm' id='bank'> {successData.description} </p>
+
+                            </div>
+
                         </div>
-
-                        <div className='text-left'>
-                            <span id='amount' className='text-2xl font-medium text-primary'> {successData.amount} </span>
-                            <p id='beneficiary'> {successData.ServiceName} </p>
-                            <p className='text-sm' id='bank'> {successData.description} </p>
-
-                        </div>
-
-                    </div>
-
+                    </ToolTip>
                 </div>
 
 

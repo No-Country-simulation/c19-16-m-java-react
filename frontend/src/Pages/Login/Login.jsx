@@ -72,20 +72,18 @@ export default function LoginPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-
     console.log("Email:", email);
     console.log("Password:", password);
     console.log("Email Error:", emailError);
     console.log("Password Error:", passwordError);
 
     if (!emailError && !passwordError) {
-
-
         try {
             console.log("Enviando solicitud a la API...");
-            
+
             console.log('email: ', email);
             console.log('password: ', password);
+
 
             
             const data = {
@@ -108,11 +106,14 @@ export default function LoginPage() {
               const response = await axios.post(`${URL_BASE}/users/login`, data)
             
 
+
             console.log("Respuesta de la API:", response);
 
             if (response.status === 200) {
+
               setsetUser(response.data.user)  
               navigate("/Home");
+
 
             } else {
                 setPasswordError('Correo electrónico o contraseña incorrectos');
@@ -129,7 +130,6 @@ export default function LoginPage() {
             } else {
                 setPasswordError('Ocurrió un error, por favor intenta nuevamente');
             }
-
         }
     } else {
         console.log("Errores en la validación, no se enviará la solicitud.");

@@ -4,23 +4,65 @@ import AmountDetails from '../Transfer/AmountDetails.jsx'
 import Confirmation from '../Transfer/Confirmation.jsx'
 import Success from '../Transfer/Success'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 // import useTranfer from '../../Hooks/useTranfer';
 
 
 
-const TransferStepContainer = () => {
+const TransferStepContainer = () => { 
+
+
+ 
+
+
+ 
+
+
 
   const [step, setStep] = useState(1)
 
-  const [formData, setFormData] = useState([])
+
+
+
+
+
+  const [formData, setFormData] = useState({
+    'Iban': '',
+    'contactName': '',
+    'bankName': '',
+    'amount': 0
+  })
+
+
+  const stepButtons = [
+    { 'id': 1,  stepName: 'AccountDetails', buttonName: 'Siguiente'}, 
+    { 'id': 2,  stepName: 'AmountDetails', buttonName:  'Siguiente'}, 
+    { 'id': 3,  stepName: 'Confirmation', buttonName:   'Confirmar'}, 
+    { 'id': 4,  stepName: 'Sucess', buttonName: 'Finalizar'}, 
+  ]
+
+
 
   const [isValidForm, setIsValidForm] = useState(false)
 
+  
 
-  const updateFormData = (event) => {
-    setFormData( (prevFormData) => [...prevFormData, {[event.target.name]: event.target.value}])
+
+  const updateFormData = (data) => {
+
+
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      ...data,
+    }));
+    
+   
+
   }
 
+
+   
+    
   const nextStep = () => {
     
     if (isValidForm) { 
@@ -44,16 +86,17 @@ const TransferStepContainer = () => {
         return <AccountDetails updateFormData={updateFormData} setIsValidForm={setIsValidForm}/>
 
       case 2:
-        return <AmountDetails />
+        return <AmountDetails updateFormData={updateFormData} setIsValidForm={setIsValidForm}/>
 
       case 3:
-        return <Confirmation />
+        return <Confirmation data={formData}/>
 
       case 4:
-        return <Success />
+        //TODO: Enviar los datos al back. Si la respuesta es correcta, renderizar <Success> si no, usar otra pantalla. 
+        return <Success data={formData}/>
 
       default:
-        return <div>Step not found</div>;
+        return navigate('/home')
 
     }
 
@@ -69,9 +112,19 @@ const TransferStepContainer = () => {
 
       <div className='w-full px-6 pb-4 mt-auto'>
         <div className='flex justify-end gap-3 items-center'>
+          
+          { stepButtons[step-1].stepName != 'Sucess' 
+            ? <button onClick={prevStep}> Atras </button>
+            : <button> Compartir </button>
+          }
+          
+          <button 
+            className={` ${isValidForm ? 'bg-primary': 'bg-darkGrey'} text-white  py-2 px-8 rounded-lg shadow`} 
+            onClick={nextStep}> {stepButtons[step-1].buttonName }  
+          </button>
 
-          <button onClick={prevStep}> Atras </button>
-          <button className={` ${isValidForm? 'bg-primary': 'bg-darkGrey'} text-white  py-2 px-8 rounded-lg shadow`} onClick={nextStep}> Siguiente </button>
+
+
         </div>
       </div>
 

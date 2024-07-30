@@ -1,22 +1,23 @@
 # Escenario 1: 
-## Objetivo: Asegurar que un usuario pueda iniciar sesión y acceder a la aplicación de Essential
-## Casos de Prueba Asociados:
-### TC01: El usuario puede iniciar sesión con credenciales válidas.
-### TC02: El usuario no puede iniciar sesión con una contraseña incorrecta.
-### TC03: El usuario puede recuperar su contraseña si la ha olvidado.
-### TC04: El usuario puede verificar su número de teléfono con el código que ha recibido por medio de mensaje de texto
-### TC05: El usuario puede verificar su número de teléfono con el código que ha recibido por medio de mensaje de texto
-### TC06: El usuario puede crear una clave de usuario cuando las dos claves ingresadas son válidas
-### TC05: El usuario no puede crear una clave de usuario cuando las dos claves ingresadas son inválidas
+### Objetivo: Asegurar que un usuario pueda iniciar sesión y acceder a la aplicación de Essential
+### Casos de Prueba Asociados:
+🔹TC01: El usuario puede iniciar sesión con credenciales válidas.
+🔹TC02: El usuario no puede iniciar sesión con una contraseña incorrecta.
+🔹TC03: El usuario puede recuperar su contraseña si la ha olvidado.
+🔹TC04: El usuario puede verificar su número de teléfono con el código que ha recibido por medio de mensaje de texto
+🔹TC05: El usuario puede verificar su número de teléfono con el código que ha recibido por medio de mensaje de texto
+🔹TC06: El usuario puede crear una clave de usuario cuando las dos claves ingresadas son válidas
+🔹TC05: El usuario no puede crear una clave de usuario cuando las dos claves ingresadas son inválidas
 
 # Escenario 2: 
-## Objetivo: El usuario puede utilizar la aplicación para realizar transferencias electrónicas
-## Casos de Prueba Asociados:
-### TC01: El usuario puede transferir $100 a un usuario de su lista de preferidos de su saldo disponible
-### TC02: El usuario puede pagar el servicio de energía con su saldo disponible
+### Objetivo: El usuario puede utilizar la aplicación para realizar transferencias electrónicas
+### Casos de Prueba Asociados:
+🔹TC01: El usuario puede transferir $100 a un usuario de su lista de preferidos de su saldo disponible
+🔹TC02: El usuario puede pagar el servicio de energía con su saldo disponible
 
 # Escenario 3: 
-## Objetivo: El botón de ayuda asiste al usuario en la realización de sus operaciones bancarias
-### TC01:
-### TC02:
-### TC0:
+### Objetivo: El botón de ayuda asiste al usuario en la realización de sus operaciones bancarias
+### Casos de Prueba Asociados:
+🔹TC01:
+🔹TC02:
+🔹TC0:

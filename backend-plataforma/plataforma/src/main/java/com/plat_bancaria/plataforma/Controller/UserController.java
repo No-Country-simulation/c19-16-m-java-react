@@ -1,7 +1,9 @@
 package com.plat_bancaria.plataforma.Controller;
 
+import com.plat_bancaria.plataforma.Domain.LoginDTO;
 import com.plat_bancaria.plataforma.Model.Log;
 import com.plat_bancaria.plataforma.Model.User;
+import com.plat_bancaria.plataforma.Service.TokenService;
 import com.plat_bancaria.plataforma.Service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -11,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
@@ -19,9 +22,15 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
+    private final TokenService tokenService;
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
-    @GetMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> deleteUser(@PathVariable Long id) {
+        userService.deleteUser(id);
+        return ResponseEntity.ok("Usuario eliminado");
+    }
+    @GetMapping("/search/{id}")
     public ResponseEntity<User> getUser(@PathVariable Long id) {
         return ResponseEntity.ok(userService.getUserById(id));
     }
@@ -64,36 +73,26 @@ public class UserController {
     }
 
     @PostMapping("/set-password")
-    public ResponseEntity<String> setPassword(@RequestBody Map<String, String> payload) {
+    public ResponseEntity<Map<String, String>> setPassword(@RequestBody Map<String, String> payload) {
         try {
             String email = payload.get("email");
             String password = payload.get("password");
 
             if (userService.setPassword(email, password)) {
-                return ResponseEntity.ok("Contraseña establecida exitosamente.");
+                String token = tokenService.generateToken(email);
+
+                Map<String, String> response = new HashMap<>();
+                response.put("message", "Contraseña establecida exitosamente.");
+                response.put("token", token);
+                return ResponseEntity.ok(response);
             } else {
-                return ResponseEntity.badRequest().body("Error al establecer la contraseña.");
+                return ResponseEntity.badRequest().body(Map.of("error", "Error al establecer la contraseña."));
             }
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body("Error al procesar la solicitud.");
+            return ResponseEntity.badRequest().body(Map.of("error", "Error al procesar la solicitud."));
         }
     }
 
 
-    @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestParam String email, @RequestParam String password) {
 
-        Optional<User> user = userService.findUserByEmail(email);
-        boolean isValid = userService.verifyUserCredentials(email, password);
-        if (user.isPresent()) {
-            if (isValid) {
-
-                return ResponseEntity.ok(user.get());
-            } else {
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-            }
-        } else {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        }
-    }
 }
