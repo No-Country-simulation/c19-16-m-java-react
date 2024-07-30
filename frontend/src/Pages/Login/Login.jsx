@@ -85,24 +85,24 @@ export default function LoginPage() {
             console.log('email: ', email);
             console.log('password: ', password);
 
-            // if (import.meta.env.MODE == 'd') {
-              
-            // }            
-
             
+            const data = {
+              email: email,
+              password: password,
+            }
+            
+            const API_URL_DESA = 'http://localhost:5000'
 
             // const response = await axios.post(`https://essential-bank-back.vercel.app/users/login`, {
-              const response = await axios.post(`${API_URL_PROD}/users/login`, {
-                email: email,
-                password: password,
-            });
+              const response = await axios.post(`${API_URL_DESA}/users/login`, data)
+            
 
             console.log("Respuesta de la API:", response);
 
             if (response.status === 200) {
               setsetUser(response.data.user)  
               navigate("/Home");
-
+              
             } else {
                 setPasswordError('Correo electrónico o contraseña incorrectos');
             }

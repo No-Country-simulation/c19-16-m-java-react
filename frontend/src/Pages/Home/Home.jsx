@@ -18,8 +18,8 @@ import tooltips from '../../data/tooltipsText'
 import users from '../../data/data'
 import Footer from '../../../src/components/Footer'
 
-// FIXME: Cuando este el back. Quitarlo. 
-import { useUser} from '../../Providers/UserProvider';
+
+import {useUser} from '../../Providers/UserProvider';
 
 
 
@@ -37,12 +37,13 @@ const Home = () => {
 
     useEffect(() => {
         
-        if (!user._id) {
+        
+            console.log('No tengo el usuario');
             const id = localStorage.getItem('id')
             console.log('id = ', id);                        
             getUserInfo(id).then((data) => setsetUser(data))
             
-        }
+        
 
         async function  getUserInfo(id) {
             const response = await axios.get(`${API_URL_PROD}/users/getUser/${id}`)
@@ -113,8 +114,7 @@ const Home = () => {
                 <section id='account-info'>
                     <p> El saldo actual de tu cuenta es </p>
                     <ToolTip id={'balanceDisplay'}>  
-                        <p className='text-[36px]'> {user.accounts[0].Balance }
-                         </p>
+                        {/* <p className='text-[36px]'> {user.accounts[0].Balance  <p> */}                         
                     </ToolTip>
                 </section>
 

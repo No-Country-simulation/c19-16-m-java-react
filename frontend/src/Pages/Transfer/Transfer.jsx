@@ -104,8 +104,8 @@ const Transfer = () => {
                 <img src={user1Photho} className='w-[50px]' alt="" />
 
                 <div className='flex flex-col flex-grow  '>
-                  <h4 className=''> {transfer.name} </h4>
-                  <p className=''> {transfer.bank} </p>
+                  <h4 className=''> {transfer.BeneficiaryName} </h4>
+                  <p className=''> {transfer.BeneficiaryBank} </p>
                 </div>
 
                 <div>

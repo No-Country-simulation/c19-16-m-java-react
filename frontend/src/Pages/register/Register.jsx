@@ -1,6 +1,7 @@
 //import { useState } from 'react';
 import React, { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";    
+import axios from 'axios';
 
 export default function Register3() {
 
@@ -17,22 +18,26 @@ export default function Register3() {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
 
+    const API_URL_PROD = import.meta.env.VITE_API_URL_PROD
+    const API_URL_DESA = 'http://localhost:5000'
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
            
-            const response = await fetch('https://plataforma-i.onrender.com/users/register', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(form)
-            });
-            if (response.ok) {
+            const response = await axios.post(`${API_URL_DESA}/users/register`, form);
+
+            console.log('response>>>>>> ', response   );
+            
+            console.log('status >>>>', response.status   );
+
+            if (response.status == 201) {
+                console.log('Me he logado...');
                 navigate('/RegisterPaso2', { state: { email: form.email } });
             }
         } catch (error) {
-            console.error('Error:', error);
+            console.log('Se ha producido un error en el registro:', error.response.data.error);
+            
         }
     };
 

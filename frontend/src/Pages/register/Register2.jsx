@@ -11,13 +11,21 @@ export default function Register2() {
 
     const handleVerify = async (e) => {
         e.preventDefault();
+
+        const API_URL_DESA = 'http://localhost:5000'
+
+        console.log('email: ', email);
+        console.log('token: ', codigo);
+        
+
+        const data = {
+            email: email,
+            token: codigo
+        }
+
         try {
-            const response = await axios.post('https://plataforma-i.onrender.com/users/verify', null, {
-                params: {
-                    email: email,
-                    token: codigo
-                }
-            });
+            const response = await axios.post(`${API_URL_DESA}/otp/checkToken`,  data) 
+            
             if (response.status === 200) {
                 navigate('/RegisterPaso3', { state: { email: email } });
             } else {

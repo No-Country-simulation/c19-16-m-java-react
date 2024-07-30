@@ -13,19 +13,31 @@ export default function Register3() {
     const { email } = location.state || {};
 
     const handleSubmit = async (e) => {
+        
+        console.log('estoy en handleSubmit');
+        
         e.preventDefault();
         if (password !== confirmPassword) {
             setMessage('Las contraseñas no coinciden');
             return;
         }
+
+        const API_URL_DESA = 'http://localhost:5000'    
+
+        const data = {
+            email: email,
+            password: password
+        }
+
         try {
-            const response = await axios.post('https://plataforma-i.onrender.com/users/set-password', {
+            
+            const response = await axios.post(`${API_URL_DESA}/users/set-password`, data)
+
+            console.log('>> response ', response);
                 
-                email: email,
-                password: password
-            });
+            
             if (response.status === 200) {
-                navigate('/Home');
+                navigate('/');
             } else {
                 setMessage('Error al configurar la contraseña');
             }
