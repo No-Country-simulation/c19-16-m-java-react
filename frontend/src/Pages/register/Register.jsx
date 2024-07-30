@@ -18,14 +18,25 @@ export default function Register3() {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
 
-    const API_URL_PROD = import.meta.env.VITE_API_URL_PROD
-    const API_URL_DESA = 'http://localhost:5000'
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        let URL_BASE = ''
+
+        if (import.meta.env.MODE == 'development') {
+             URL_BASE = 'http://localhost:5000'
+          } else {
+            URL_BASE = import.meta.env.VITE_API_URL_PROD
+          }
+
+
         try {
+
+  
+              console.log('URL_BASE >> ', URL_BASE);
            
-            const response = await axios.post(`${API_URL_DESA}/users/register`, form);
+            const response = await axios.post(`${URL_BASE}/users/register`, form);
 
             console.log('response>>>>>> ', response   );
             

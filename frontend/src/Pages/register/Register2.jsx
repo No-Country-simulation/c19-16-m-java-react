@@ -12,7 +12,7 @@ export default function Register2() {
     const handleVerify = async (e) => {
         e.preventDefault();
 
-        const API_URL_DESA = 'http://localhost:5000'
+        
 
         console.log('email: ', email);
         console.log('token: ', codigo);
@@ -23,8 +23,21 @@ export default function Register2() {
             token: codigo
         }
 
+            let URL_BASE = ''
+        if (import.meta.env.MODE == 'development') {
+            URL_BASE = 'http://localhost:5000'
+          } else {
+             URL_BASE = import.meta.env.VITE_API_URL_PROD
+          }
+
+          console.log('URL_BASE >> ', URL_BASE);
+
+
         try {
-            const response = await axios.post(`${API_URL_DESA}/otp/checkToken`,  data) 
+
+
+
+            const response = await axios.post(`${URL_BASE}/otp/checkToken`,  data) 
             
             if (response.status === 200) {
                 navigate('/RegisterPaso3', { state: { email: email } });

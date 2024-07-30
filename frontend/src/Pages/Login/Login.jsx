@@ -8,6 +8,8 @@ import axios from 'axios';
 
 
 export default function LoginPage() {
+
+  console.log('VITE_API_URL_PROD >>> ', import.meta.env.VITE_API_URL_PROD);
   
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
@@ -91,10 +93,19 @@ export default function LoginPage() {
               password: password,
             }
             
-            const API_URL_DESA = 'http://localhost:5000'
+            
+            let URL_BASE = ''
+            
+            if (import.meta.env.MODE == 'development') {
+              URL_BASE = 'http://localhost:5000'
+            } else {
+              URL_BASE = import.meta.env.VITE_API_URL_PROD
+            }
+
+            console.log('URL_BASE >> ', URL_BASE);
 
             // const response = await axios.post(`https://essential-bank-back.vercel.app/users/login`, {
-              const response = await axios.post(`${API_URL_DESA}/users/login`, data)
+              const response = await axios.post(`${URL_BASE}/users/login`, data)
             
 
             console.log("Respuesta de la API:", response);
@@ -102,7 +113,7 @@ export default function LoginPage() {
             if (response.status === 200) {
               setsetUser(response.data.user)  
               navigate("/Home");
-              
+
             } else {
                 setPasswordError('Correo electrónico o contraseña incorrectos');
             }

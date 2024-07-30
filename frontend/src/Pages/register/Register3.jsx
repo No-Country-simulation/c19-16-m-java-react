@@ -29,9 +29,20 @@ export default function Register3() {
             password: password
         }
 
+        let URL_BASE = ''
+
+        if (import.meta.env.MODE == 'development') {
+            URL_BASE = 'http://localhost:5000'
+          } else {
+             URL_BASE = import.meta.env.VITE_API_URL_PROD
+          }
+
         try {
+
+  
+              console.log('URL_BASE >> ', URL_BASE);
             
-            const response = await axios.post(`${API_URL_DESA}/users/set-password`, data)
+            const response = await axios.post(`${URL_BASE}/users/set-password`, data)
 
             console.log('>> response ', response);
                 
