@@ -80,7 +80,7 @@ export default function Register3() {
         try {
 
   
-              console.log('URL_BASE >> ', URL_BASE);
+              console.log('URL_BASE >>>>> ', URL_BASE);
             
             const response = await axios.post(`${URL_BASE}/users/set-password`, data)
 
