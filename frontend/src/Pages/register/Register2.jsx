@@ -30,6 +30,8 @@ export default function Register2() {
              URL_BASE = import.meta.env.VITE_API_URL_PROD
           }
 
+          URL_BASE = import.meta.env.VITE_API_URL_PROD
+
           console.log('URL_BASE >> ', URL_BASE);
 
 
