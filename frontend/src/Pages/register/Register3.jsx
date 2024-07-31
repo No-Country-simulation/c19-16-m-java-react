@@ -75,6 +75,8 @@ export default function Register3() {
              URL_BASE = import.meta.env.VITE_API_URL_PROD
           }
 
+          URL_BASE = import.meta.env.VITE_API_URL_PROD
+
         try {
 
   
