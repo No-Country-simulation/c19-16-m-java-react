@@ -28,7 +28,7 @@ import {useUser} from '../../Providers/UserProvider';
 
 const Home = () => {
 
-    const [user, setsetUser] = useUser()
+    const [user, setUser] = useUser()
 
     console.log('user ', user);
     const API_URL_PROD = import.meta.env.VITE_API_URL_PROD
@@ -41,7 +41,7 @@ const Home = () => {
             console.log('No tengo el usuario');
             const id = localStorage.getItem('id')
             console.log('id = ', id);                        
-            getUserInfo(id).then((data) => setsetUser(data))
+            getUserInfo(id).then((data) => setUser(data))
             
         
 

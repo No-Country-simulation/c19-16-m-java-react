@@ -3,26 +3,22 @@ import AccountDetails from '../Transfer/AccountDetails.jsx'
 import AmountDetails from '../Transfer/AmountDetails.jsx'
 import Confirmation from '../Transfer/Confirmation.jsx'
 import Success from '../Transfer/Success'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import axiosInstance from '../../../src/axiosConfig'
+import { useUser } from '../../Providers/UserProvider.jsx'
 // import useTranfer from '../../Hooks/useTranfer';
-import axios from 'axios'
+
 
 
 const TransferStepContainer = () => { 
 
-  let URL_BASE = ''
-            
-  if (import.meta.env.MODE == 'development') {
-    URL_BASE = 'http://localhost:5000'
-  } else {
-    URL_BASE = import.meta.env.VITE_API_URL_PROD
-  }
 
   const navigate = useNavigate()
 
   const [step, setStep] = useState(1)
 
+  const [user, setUser] = useUser();
 
   const [formData, setFormData] = useState({
     'Iban': '',
@@ -30,6 +26,28 @@ const TransferStepContainer = () => {
     'bankName': '',
     'amount': 0
   })
+
+  useEffect(() => {              
+  
+    if (!user) {
+      console.log('No tengo el usuario... ');
+      const id = localStorage.getItem('id')
+      console.log('id = ', id);
+      getUserInfo(id).then((data) => setUser(data))
+    }
+
+    
+                            
+     
+  
+  async function  getUserInfo(id) {
+    const response = await axiosInstance.get(`/users/getUser/${id}`)
+    console.log('response ', response);
+    return response.data
+  }
+  
+  }, [])
+  
 
   const [destAccount, setDestAccount] = useState();
 
@@ -43,7 +61,7 @@ const TransferStepContainer = () => {
     
     try {
       
-      const response = await axios.get(`${URL_BASE}/accounts/get-account-by-IBAN/${IBAN}`)  
+      const response = await axiosInstance.get(`/accounts/get-account-by-IBAN/${IBAN}`)  
       
       console.table('response.data > ', response.data);
 
@@ -66,28 +84,6 @@ const TransferStepContainer = () => {
     
   }
 
-  async function withdrawMoney() {
-
-    console.log('descuento saldo ');
-    try {
-
-      const data = {amount: parseInt(formData.amount)}  
-      
-      const resp = await axios.put(`${URL_BASE}/accounts/withdraw-money/${destAccount._id}`, data)
-      
-      console.log('resp.status ', resp.status);
-      console.log('resp.data ', resp.data);
-
-      if (resp.status == 200) {
-        console.log('Transferencia correcta');
-      }
-    
-    } catch (error) {
-      console.log('Error: ', error);
-    }
-
-
-  }
 
 
   const stepButtons = [
@@ -124,17 +120,6 @@ const TransferStepContainer = () => {
 
 
     if (isValidForm) { 
-
-      
-      
-      if (step <= 3 && stepButtons[step].stepName == 'Confirmation') {
-        
-        withdrawMoney()
-
-        
-
-      }
-  
       setStep(step + 1)
     }
 
@@ -158,11 +143,11 @@ const TransferStepContainer = () => {
         return <AmountDetails updateFormData={updateFormData} setIsValidForm={setIsValidForm} accountInfo={destAccount}/>
 
       case 3:
-        return <Confirmation data={formData} accountInfo={destAccount}/>
+        return <Confirmation data={formData} accountInfo={destAccount} user={user}/>
 
       case 4:
         
-        return <Success data={formData} accountInfo={destAccount}/>
+        return <Success data={formData} accountInfo={destAccount} user={user}/>
 
       default:
         return navigate('/home')

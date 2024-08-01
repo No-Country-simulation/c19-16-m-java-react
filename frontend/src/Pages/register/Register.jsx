@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
+import axiosInstance from '../../../src/axiosConfig'
 
 export default function Register() {
     const [form, setForm] = useState({
@@ -179,22 +180,10 @@ export default function Register() {
             return;
         }
 
-        let URL_BASE = ''
-
-        console.log('import.meta.env.MODE ', import.meta.env.MODE);
-
-        if (import.meta.env.MODE === 'development') {
-            URL_BASE = 'http://localhost:5000'
-        } else {
-            URL_BASE = import.meta.env.VITE_API_URL_PROD
-        }
-
-        URL_BASE = import.meta.env.VITE_API_URL_PROD
-        console.log('URL_BASE >>>> ', URL_BASE);    
         
         try {
             
-            const response = await axios.post(`${URL_BASE}/users/register`, form);
+            const response = await axiosInstance.post('/users/register', form);
             console.log('response>>>>>> ', response);
             console.log('status >>>>', response.status);
 

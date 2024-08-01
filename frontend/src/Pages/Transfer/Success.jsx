@@ -1,15 +1,44 @@
 import React from 'react'
 import Header from '../../components/Header'
 import user1Photho from '../../assets/Images/user1.jpg'
+import axiosInstance from '../../axiosConfig'
+import { useEffect } from 'react'
 
-const Success = ({data, accountInfo}) => {
+const Success = ({data, accountInfo, user}) => {
 
 
-  // FIXME: Borrar esto. 
-  // 'Iban': '',
-  // 'contactName': '',
-  // 'bankName': '',
-  // 'amount': 0
+  
+
+
+  useEffect(() => {
+    withdrawMoney()
+  }, [])
+    
+
+  async function withdrawMoney() {
+
+    console.log('descuento saldo ');
+    try {
+
+      const dataaxios = {amount: parseInt(data.amount)}  
+
+      console.log('user ', user);
+      
+      const resp = await axiosInstance.put(`/accounts/withdraw-money/${user.accounts[0]._id}`, dataaxios)
+      
+      console.log('resp.status ', resp.status);
+      console.log('resp.data ', resp.data);
+
+      if (resp.status == 200) {
+        console.log('Transferencia correcta');
+      }
+    
+    } catch (error) {
+      console.log('Error ->> ', error);
+    }
+
+
+  }
 
 
   return (
@@ -32,10 +61,10 @@ const Success = ({data, accountInfo}) => {
           </div> 
           
           <div>
-            <span className='text-[22px]'> {data.amount} </span>        
+            <span className='text-[22px]'> {data?.amount} </span>        
             <p id='beneficiary' className='text-[16px]' > {accountInfo.Holder ? accountInfo.Holder : 'Beneficiario no informado'} </p>
             <p id='bank' className='text-[12px]'> {accountInfo.Bank ? accountInfo.Bank : 'Banco destino no informado'} </p>
-            <p className='text-[12px]'> UBAN: {data.Iban} </p>
+            <p className='text-[12px]'> UBAN: {data?.Iban} </p>
           </div>
 
         </div>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import Header from '../../components/Header'
+import axiosInstance from '../../axiosConfig';
 
 const AmountDetails = ({updateFormData, setIsValidForm, accountInfo}) => {
 
@@ -8,7 +9,7 @@ const AmountDetails = ({updateFormData, setIsValidForm, accountInfo}) => {
   
   const [amount, setAmount] = useState(0)
   const [amountError, setAmountError] = useState('')
-  
+  const [user, setsetUser] = useState()
 
   useEffect(() => {  
 
@@ -22,6 +23,23 @@ const AmountDetails = ({updateFormData, setIsValidForm, accountInfo}) => {
     }  
   
 }, [amount])
+
+
+useEffect(() => {              
+  
+  const id = localStorage.getItem('id')
+  console.log('id = ', id);                        
+  getUserInfo(id).then((data) => setsetUser(data)) 
+
+async function  getUserInfo(id) {
+  const response = await axiosInstance.get(`/users/getUser/${id}`)
+  console.log('response ', response);
+  return response.data
+}
+
+}, [])
+
+
 
   const handleAmount = (event) => {
 
@@ -65,11 +83,14 @@ const AmountDetails = ({updateFormData, setIsValidForm, accountInfo}) => {
           // step="0.01"
         />
 
-      <p> Monto disponible ${accountInfo.Balance} usd </p>
+      <p> Monto disponible ${user?.accounts[0].Balance} usd </p>
 
       {amountError && <div> <p className='text-sm text-red-600'> {amountError} </p> </div> }
 
     </div>
+
+
+    
 
     
 

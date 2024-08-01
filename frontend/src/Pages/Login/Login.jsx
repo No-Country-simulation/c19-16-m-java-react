@@ -5,7 +5,7 @@ import users from '../../data/data'
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../../Providers/UserProvider';
 import axios from 'axios';
-
+import axiosInstance from '../../../src/axiosConfig'
 
 export default function LoginPage() {
 
@@ -13,7 +13,7 @@ export default function LoginPage() {
   
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
-  const [user, setsetUser] = useUser()
+  const [user, setUser] = useUser()
 
   const [isDisabled, setisDisabled] = useState(true)
   
@@ -101,21 +101,11 @@ export default function LoginPage() {
             const data = {
               email: email,
               password: password,
-            }
+            }           
             
-            
-            let URL_BASE = ''
-            
-            if (import.meta.env.MODE == 'development') {
-              URL_BASE = 'http://localhost:5000'
-            } else {
-              URL_BASE = import.meta.env.VITE_API_URL_PROD
-            }
-
-            console.log('URL_BASE >> ', URL_BASE);
 
             // const response = await axios.post(`https://essential-bank-back.vercel.app/users/login`, {
-              const response = await axios.post(`${URL_BASE}/users/login`, data)
+              const response = await axiosInstance.post('/users/login', data)
             
 
 
@@ -128,7 +118,7 @@ export default function LoginPage() {
 
               
 
-              setsetUser(response.data.user)  
+              setUser(response.data.user)  
               navigate("/Home");
               localStorage.setItem('token', response.data.token)
               localStorage.setItem('id', response.data.user._id)
