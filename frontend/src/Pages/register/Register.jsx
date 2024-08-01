@@ -180,10 +180,12 @@ export default function Register() {
             return;
         }
 
+
         
         try {
             
             const response = await axiosInstance.post('/users/register', form);
+
             console.log('response>>>>>> ', response);
             console.log('status >>>>', response.status);
 

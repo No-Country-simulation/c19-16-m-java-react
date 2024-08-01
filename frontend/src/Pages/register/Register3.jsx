@@ -69,6 +69,8 @@ export default function Register3() {
         }
 
 
+          
+
         try {
             
             const response = await axiosInstance.post('/users/set-password', data)

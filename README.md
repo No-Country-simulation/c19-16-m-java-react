@@ -59,7 +59,7 @@ Ofrece un DEMO INTERACTIVO en vivo, no un PDF prediseñado.
     <td>Yeimar</td>
     <td>Yecid Lemus</td>
     <td>Team Lead</td>
-    <td><a href="xxxxxx" target="_blank">Ver xxx</a></td>
+    <td><a href="https://www.linkedin.com/in/yeimar-lemus" target="_blank">Ver LinkedInxxx</a></td>
   </tr>
   <tr>
     <td>Gloria</td>
