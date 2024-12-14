@@ -4,7 +4,7 @@
   <img src="https://github.com/No-Country-simulation/c19-16-m-java-react/blob/5ca0d63f4e3e2dca65d266506b3bcb42bb8f4f43/essential_logo.png" width="280" alt="LOGO">
 </div>
 
-## 💻 essencial: Banca Digital Accesible 💵: 
+## 💻 essencial: Banca Digital    Accesible 💵: 
 essential es una aplicación bancaria accesible y fácil de usar, especialmente diseñada para personas mayores o con poca experiencia tecnológica. La aplicación ofrece una interfaz intuitiva y segura para realizar transacciones bancarias básicas como transferencias de dinero y pagos de servicios. El diseño se centra en la accesibilidad y la simplicidad para asegurar una experiencia positiva para todos los usuarios.
 
 ## Público Objetivo 👵🏻​​📵
